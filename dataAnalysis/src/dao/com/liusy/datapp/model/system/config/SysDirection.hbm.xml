@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.system.config">
+   <class name="SysDirection" table="T_SYS_DIRECTION_INFO" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="dirName" column="DIR_NAME" type="string" not-null="false" length="32" />
+      <property name="dirCode" column="DIR_CODE" type="string" not-null="false" length="32" />
+      <property name="dirDesc" column="DIR_DESC" type="string" not-null="false" length="128" />
+      <property name="remark" column="REMARK" type="string" not-null="false" length="256" />
+   </class>	
+</hibernate-mapping>

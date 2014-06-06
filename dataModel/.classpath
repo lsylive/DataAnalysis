@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="/dataAnalysis/web/WEB-INF/lib/org.eclipse.draw2d_3.2.100.v20070529.jar"/>
+	<classpathentry kind="lib" path="/dataAnalysis/web/WEB-INF/lib/org.eclipse.ui.views_3.2.101.M20080207-0800.jar"/>
+	<classpathentry kind="lib" path="/dataAnalysis/web/WEB-INF/lib/org.eclipse.swt.win32.win32.x86_3.3.3.v3349.jar"/>
+	<classpathentry kind="lib" path="/analysisTemplate/lib/baseline.jar"/>
+	<classpathentry kind="lib" path="/analysisTemplate/lib/commons-beanutils.jar"/>
+	<classpathentry kind="lib" path="/analysisTemplate/lib/commons-io-1.4.jar"/>
+	<classpathentry kind="lib" path="/analysisTemplate/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="/analysisTemplate/lib/edtftpj.jar"/>
+	<classpathentry kind="lib" path="/analysisTemplate/lib/IntelAnalysisModel.jar"/>
+	<classpathentry kind="lib" path="/analysisTemplate/lib/jconn3.jar"/>
+	<classpathentry kind="lib" path="/analysisTemplate/lib/jdom-1.0.jar"/>
+	<classpathentry kind="lib" path="/analysisTemplate/lib/log4j-1.2.11.jar"/>
+	<classpathentry kind="lib" path="/analysisTemplate/lib/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="/analysisTemplate/lib/org.eclipse.core.databinding_1.0.1.M20070822-0800.jar"/>
+	<classpathentry kind="lib" path="/analysisTemplate/lib/org.eclipse.core.databinding.beans_1.0.1.M20070910-0800b.jar"/>
+	<classpathentry kind="lib" path="/analysisTemplate/lib/org.eclipse.jface.databinding_1.1.1.M20080207-0800.jar"/>
+	<classpathentry kind="lib" path="/analysisTemplate/lib/swt-grouplayout.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.analysis">
+   <class name="AnalysisDatasetColumn" table="T_ANALYSIS_DATASET_COLUMN" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="orderType" column="ORDER_TYPE" type="string" not-null="false" length="1" />
+      <property name="resourceColumnName" column="RESOURCE_COLUMN_NAME" type="string" not-null="false" length="64" />
+      <property name="groupBy" column="GROUP_BY" type="string" not-null="false" length="1" />
+      <property name="cnName" column="CN_NAME" type="string" not-null="false" length="64" />
+      <property name="orderSeq" column="ORDER_SEQ" type="integer" not-null="false" length="22" />
+      <property name="orderBy" column="ORDER_BY" type="string" not-null="false" length="1" />
+      <property name="aliasName" column="ALIAS_NAME" type="string" not-null="false" length="32" />
+      <property name="aggregateFunction" column="AGGREGATE_FUNCTION" type="string" not-null="false" length="32" />
+      <property name="analysisDatasetId" column="ANALYSIS_DATASET_ID" type="integer" not-null="false" length="22" />
+      <property name="resourceColumnId" column="RESOURCE_COLUMN_ID" type="integer" not-null="false" length="22" />
+      <property name="selected" column="SELECTED" type="string" not-null="false" length="1" />
+      <property name="seqNo" column="SEQ_NO" type="integer" not-null="false" length="22" />
+   </class>	
+</hibernate-mapping>

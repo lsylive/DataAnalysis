@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>      
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">      
+      
+<struts-config>      
+      
+  <form-beans>      
+<!-- BlacklistDeclarationForm declare begin -->      
+    <form-bean name="blacklistDeclarationForm" type="com.liusy.datapp.web.blacklist.form.BlacklistDeclarationForm" />         
+<!-- BlacklistDeclarationForm declare end -->      
+<!-- BlacklistAlarmForm declare begin -->     
+    <form-bean name="blacklistAlarmForm" type="com.liusy.datapp.web.blacklist.form.BlacklistAlarmForm" />    
+<!-- BlacklistAlarmForm declare end -->     
+  </form-beans>      
+        
+  <action-mappings>      
+<!-- BlacklistDeclarationAction mappings declare begin -->      
+   <action path="/blacklist/blacklistDeclarationAction" name="blacklistDeclarationForm" scope="request"  validate="true" type="com.liusy.datapp.web.blacklist.action.BlacklistDeclarationAction">     
+      <forward name="LIST"   path="/pages/blacklist/blacklistDeclaration_list.jsp"/>     
+      <forward name="ADD"    path="/pages/blacklist/blacklistDeclaration_add.jsp"/>     
+      <forward name="EDIT" path="/pages/blacklist/blacklistDeclaration_add.jsp"/>     
+      <forward name="VIEW"   path="/pages/blacklist/blacklistDeclaration_view.jsp"/>     
+   </action>         
+<!-- BlacklistDeclarationAction mappings declare end -->      
+<!-- BlacklistAlarmAction mappings declare begin -->     
+   <action name="blacklistAlarmForm" type="com.liusy.datapp.web.blacklist.action.BlacklistAlarmAction"
+           path="/blacklist/blacklistAlarmAction" parameter="method" scope="request">
+      <forward name="LIST"   path="/pages/blacklist/blacklistAlarm_list.jsp"/>
+      <forward name="VIEW"   path="/pages/blacklist/blacklistAlarm_view.jsp"/>
+   </action>    
+<!-- BlacklistAlarmAction mappings declare end -->     
+  </action-mappings>      
+       
+</struts-config>          

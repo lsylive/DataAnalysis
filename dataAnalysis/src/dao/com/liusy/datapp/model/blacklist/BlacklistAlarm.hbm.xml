@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.blacklist">
+   <class name="BlacklistAlarm" table="T_BLACKLIST_ALARM" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="decId" column="DEC_ID" type="integer" not-null="false" length="22" />
+      <property name="hitDtId" column="HIT_DT_ID" type="integer" not-null="false" length="22" />
+      <property name="hitIndCode" column="HIT_IND_CODE" type="string" not-null="false" length="32" />
+      <property name="hitValue" column="HIT_VALUE" type="string" not-null="false" length="4000" />
+      <property name="hitTime" column="HIT_TIME" type="date" not-null="false" length="7" />
+      <property name="alarmStatus" column="ALARM_STATUS" type="string" not-null="false" length="1" />
+   </class>	
+</hibernate-mapping>

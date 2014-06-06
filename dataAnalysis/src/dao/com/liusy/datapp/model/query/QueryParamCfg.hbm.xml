@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.query">
+   <class name="QueryParamCfg" table="T_QUERY_TABLEPARAM_CFG" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="columnId" column="COLUMN_ID" type="integer" not-null="false" length="22" />
+      <property name="stQuery" column="ST_QUERY" type="string" not-null="false" length="1" />
+      <property name="filterOperator" column="FILTER_OPERATOR" type="string" not-null="false" length="32" />
+      <property name="batchQuery" column="BATCH_QUERY" type="string" not-null="false" length="1" />
+      <property name="homonymQuery" column="HOMONYM_QUERY" type="string" not-null="false" length="1" />
+      <property name="isFilter" column="IS_FILTER" type="string" not-null="false" length="1" />
+      <property name="tableId" column="TABLE_ID" type="integer" not-null="false" length="22" />
+      <property name="seqNo" column="SEQ_NO" type="integer" not-null="false" length="22" />
+      <property name="fuzzyQuery" column="FUZZY_QUERY" type="string" not-null="false" length="1" />
+   </class>	
+</hibernate-mapping>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>                                                                                  
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"                                                                                  
+    "http://www.springframework.org/dtd/spring-beans.dtd">                                                                                  
+                                                                                  
+<beans >                                                                                  
+<!-- SysOrgDao bean declare begin -->                                                                    
+   <bean id="sysOrgDao" class="com.liusy.datapp.dao.system.org.impl.SysOrgDaoImpl" autowire="byName"/>    
+<!-- SysOrgDao bean declare end -->                                                                    
+<!-- SysCodeSetDao bean declare begin -->                                                           
+   <bean id="sysCodeSetDao" class="com.liusy.datapp.dao.system.config.impl.SysCodeSetDaoImpl" autowire="byName"/>                 
+<!-- SysCodeSetDao bean declare end -->                                                           
+<!-- SysResourceDao bean declare begin -->                                                        
+   <bean id="sysResourceDao" class="com.liusy.datapp.dao.system.config.impl.SysResourceDaoImpl" autowire="byName"/>   
+<!-- SysResourceDao bean declare end -->                                                                                                              
+<!-- SysDeptDao bean declare begin -->                                                      
+   <bean id="sysDeptDao" class="com.liusy.datapp.dao.system.org.impl.SysDeptDaoImpl" autowire="byName"/>                                                     
+<!-- SysDeptDao bean declare end -->                                                      
+<!-- SysRoleDao bean declare begin -->                                                   
+   <bean id="sysRoleDao" class="com.liusy.datapp.dao.system.org.impl.SysRoleDaoImpl" autowire="byName"/>       
+<!-- SysRoleDao bean declare end -->                                                                                                     
+<!-- SysCodeDao bean declare begin -->                                          
+   <bean id="sysCodeDao" class="com.liusy.datapp.dao.system.config.impl.SysCodeDaoImpl" autowire="byName"/>                  
+<!-- SysCodeDao bean declare end -->                                          
+<!-- SysCityDao bean declare begin -->                                         
+   <bean id="sysCityDao" class="com.liusy.datapp.dao.system.config.impl.SysCityDaoImpl" autowire="byName"/>                                         
+<!-- SysCityDao bean declare end -->                                         
+<!-- ResourceColumnDao bean declare begin -->                                        
+   <bean id="resourceColumnDao" class="com.liusy.datapp.dao.resource.impl.ResourceColumnDaoImpl" autowire="byName"/>                                        
+<!-- ResourceColumnDao bean declare end -->                                        
+<!-- ResourceTableDao bean declare begin -->                                       
+   <bean id="resourceTableDao" class="com.liusy.datapp.dao.resource.impl.ResourceTableDaoImpl" autowire="byName"/>                              
+<!-- ResourceTableDao bean declare end -->                                       
+<!-- StandardCategoryDao bean declare begin -->                                      
+   <bean id="standardCategoryDao" class="com.liusy.datapp.dao.datastandard.impl.StandardCategoryDaoImpl" autowire="byName"/>                             
+<!-- StandardCategoryDao bean declare end -->                                      
+<!-- StandardCodeDao bean declare begin -->                                     
+   <bean id="standardCodeDao" class="com.liusy.datapp.dao.datastandard.impl.StandardCodeDaoImpl" autowire="byName"/>                                     
+<!-- StandardCodeDao bean declare end -->                                     
+<!-- StandardCodesetDao bean declare begin -->                                    
+   <bean id="standardCodesetDao" class="com.liusy.datapp.dao.datastandard.impl.StandardCodesetDaoImpl" autowire="byName"/>                                    
+<!-- StandardCodesetDao bean declare end -->                                    
+<!-- StandardDataMetaDao bean declare begin -->                                   
+   <bean id="standardDataMetaDao" class="com.liusy.datapp.dao.datastandard.impl.StandardDataMetaDaoImpl" autowire="byName"/>                                   
+<!-- StandardDataMetaDao bean declare end -->                                   
+<!-- StandardIndicatorDao bean declare begin -->                                  
+   <bean id="standardIndicatorDao" class="com.liusy.datapp.dao.datastandard.impl.StandardIndicatorDaoImpl" autowire="byName"/>                                  
+<!-- StandardIndicatorDao bean declare end -->                                  
+<!-- SysPowerDao bean declare begin -->                           
+   <bean id="sysPowerDao" class="com.liusy.datapp.dao.system.config.impl.SysPowerDaoImpl" autowire="byName"/>                          
+<!-- SysPowerDao bean declare end -->                           
+<!-- SysResourceUserDao bean declare begin -->                         
+   <bean id="sysResourceUserDao" class="com.liusy.datapp.dao.system.org.impl.SysResourceUserDaoImpl" autowire="byName"/>                         
+<!-- SysResourceUserDao bean declare end -->                         
+<!-- SysUserRoleDao bean declare begin -->                        
+   <bean id="sysUserRoleDao" class="com.liusy.datapp.dao.system.org.impl.SysUserRoleDaoImpl" autowire="byName"/>                      
+<!-- SysUserRoleDao bean declare end -->                        
+<!-- SysUserDao bean declare begin -->                     
+   <bean id="sysUserDao" class="com.liusy.datapp.dao.system.org.impl.SysUserDaoImpl" autowire="byName"/>      
+<!-- SysUserDao bean declare end -->                                        
+<!-- SysResourceRoleDao bean declare begin -->                
+   <bean id="sysResourceRoleDao" class="com.liusy.datapp.dao.system.org.impl.SysResourceRoleDaoImpl" autowire="byName"/>               
+<!-- SysResourceRoleDao bean declare end -->                
+<!-- AnalysisDatasetDao bean declare begin -->              
+   <bean id="analysisDatasetDao" class="com.liusy.datapp.dao.analysis.impl.AnalysisDatasetDaoImpl" autowire="byName"/>              
+<!-- AnalysisDatasetDao bean declare end -->              
+<!-- AnalysisDatasetColumnDao bean declare begin -->             
+   <bean id="analysisDatasetColumnDao" class="com.liusy.datapp.dao.analysis.impl.AnalysisDatasetColumnDaoImpl" autowire="byName"/>             
+<!-- AnalysisDatasetColumnDao bean declare end -->             
+<!-- AnalysisDatasetConditionDao bean declare begin -->            
+   <bean id="analysisDatasetConditionDao" class="com.liusy.datapp.dao.analysis.impl.AnalysisDatasetConditionDaoImpl" autowire="byName"/>            
+<!-- AnalysisDatasetConditionDao bean declare end -->            
+<!-- AnalysisTemplateDao bean declare begin -->           
+   <bean id="analysisTemplateDao" class="com.liusy.datapp.dao.analysis.impl.AnalysisTemplateDaoImpl" autowire="byName"/>           
+<!-- AnalysisTemplateDao bean declare end -->           
+<!-- AnalysisTemplateParamsDao bean declare begin -->          
+   <bean id="analysisTemplateParamsDao" class="com.liusy.datapp.dao.analysis.impl.AnalysisTemplateParamsDaoImpl" autowire="byName"/>          
+<!-- AnalysisTemplateParamsDao bean declare end -->          
+<!-- AnalysisTemplateConfigDao bean declare begin -->         
+   <bean id="analysisTemplateConfigDao" class="com.liusy.datapp.dao.analysis.impl.AnalysisTemplateConfigDaoImpl" autowire="byName"/>         
+<!-- AnalysisTemplateConfigDao bean declare end -->         
+<!-- ResourceTableUserCfgDao bean declare begin -->  
+   <bean id="resourceTableUserCfgDao" class="com.liusy.datapp.dao.resource.impl.ResourceTableUserCfgDaoImpl" autowire="byName"/>  
+<!-- ResourceTableUserCfgDao bean declare end -->  
+<!-- ResourceColumnUserCfgDao bean declare begin --> 
+   <bean id="resourceColumnUserCfgDao" class="com.liusy.datapp.dao.resource.impl.ResourceColumnUserCfgDaoImpl" autowire="byName"/> 
+<!-- ResourceColumnUserCfgDao bean declare end --> 
+<!-- SysLogOperateDao bean declare begin --> 
+   <bean id="sysLogOperateDao" class="com.liusy.datapp.dao.system.log.impl.SysLogOperateDaoImpl" autowire="byName"/> 
+<!-- SysLogOperateDao bean declare end --> 
+</beans>                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  

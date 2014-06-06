@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>                                                          
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"                                                          
+    "http://www.springframework.org/dtd/spring-beans.dtd">                                                          
+                                                          
+<beans>                                                          
+                                                        
+    <!--loginService-START-->                                                          
+    <bean id="loginService" parent="txProxyTemplate">                                                          
+        <property name="target">                                                          
+            <bean class="com.liusy.datapp.service.login.impl.LoginServiceImpl" autowire="byName"/>                                                          
+        </property>                                                          
+    </bean>                                                          
+    <!--loginService-END-->                                                          
+    <!--SysUserInfo-START-->                                                          
+    <bean id="sysUserService" parent="txProxyTemplate">                                                          
+        <property name="target">                                                          
+            <bean class="com.liusy.datapp.service.system.org.impl.SysUserServiceImpl" autowire="byName"/>                                                          
+        </property>                                                          
+    </bean>                                                          
+    <!--SysUserInfo-END-->                                                                                                                 
+                                                        
+<!-- SysOrgService bean declare begin -->                                                        
+   <bean id="sysOrgService" parent="txProxyTemplate">                    
+        <property name="target">                    
+            <bean class="com.liusy.datapp.service.system.org.impl.SysOrgServiceImpl" autowire="byName"/>                    
+        </property>                    
+    </bean>                  
+<!-- SysOrgService bean declare end -->                                                        
+<!-- CodeSetService bean declare begin -->                                                  
+   <bean id="codeSetService" parent="txProxyTemplate">                                                      
+        <property name="target">                                                      
+            <bean class="com.liusy.datapp.service.system.config.impl.SysCodeSetServiceImpl" autowire="byName"/>                                                      
+        </property>                                                      
+    </bean>                                                    
+<!-- CodeSetService bean declare end -->                                                  
+<!-- CodeValueService bean declare begin -->                                                
+   <bean id="codeValueService" parent="txProxyTemplate">                                                     
+        <property name="target">                                                     
+            <bean class="com.liusy.datapp.service.system.config.impl.SysCodeServiceImpl" autowire="byName"/>                                                     
+        </property>                                                     
+    </bean>                                                   
+<!-- CodeValueService bean declare end -->                                                
+<!-- SysCodeSetService bean declare begin -->                                               
+   <bean id="sysCodeSetService" parent="txProxyTemplate">                                               
+        <property name="target">                                               
+            <bean class="com.liusy.datapp.service.system.config.impl.SysCodeSetServiceImpl" autowire="byName"/>                                               
+        </property>                                               
+    </bean>                                             
+<!-- SysCodeSetService bean declare end -->                                               
+<!-- SysCodeService bean declare begin -->                                         
+   <bean id="sysCodeService" parent="txProxyTemplate">                             
+        <property name="target">                             
+            <bean class="com.liusy.datapp.service.system.config.impl.SysCodeServiceImpl" autowire="byName"/>                             
+        </property>                             
+    </bean>                           
+<!-- SysCodeService bean declare end -->                                                                              
+<!-- SysDeptService bean declare begin -->                                      
+   <bean id="sysDeptService" parent="txProxyTemplate">                                 
+        <property name="target">                                 
+            <bean class="com.liusy.datapp.service.system.org.impl.SysDeptServiceImpl" autowire="byName"/>                                 
+        </property>                                 
+    </bean>                               
+<!-- SysDeptService bean declare end -->                                      
+<!-- SysRoleService bean declare begin -->                          
+   <bean id="sysRoleService" parent="txProxyTemplate">                               
+        <property name="target">                               
+            <bean class="com.liusy.datapp.service.system.org.impl.SysRoleServiceImpl" autowire="byName"/>                               
+        </property>                               
+    </bean>                             
+<!-- SysRoleService bean declare end -->                                                  
+<!-- SysCityService bean declare begin -->                       
+   <bean id="sysCityService" parent="txProxyTemplate">                            
+        <property name="target">                            
+            <bean class="com.liusy.datapp.service.system.config.impl.SysCityServiceImpl" autowire="byName"/>                            
+        </property>                            
+    </bean>                          
+<!-- SysCityService bean declare end -->                       
+<!-- SysResourceService bean declare begin -->                                        
+   <bean id="sysResourceService" parent="txProxyTemplate">                   
+        <property name="target">                   
+            <bean class="com.liusy.datapp.service.system.config.impl.SysResourceServiceImpl" autowire="byName"/>                   
+        </property>                   
+    </bean>                 
+<!-- SysResourceService bean declare end -->                                                                              
+<!-- ResourceColumnService bean declare begin -->                      
+   <bean id="resourceColumnService" parent="txProxyTemplate">                           
+        <property name="target">                           
+            <bean class="com.liusy.datapp.service.resource.impl.ResourceColumnServiceImpl" autowire="byName"/>                           
+        </property>                           
+    </bean>                         
+<!-- ResourceColumnService bean declare end -->                      
+<!-- ResourceTableService bean declare begin -->                     
+   <bean id="resourceTableService" parent="txProxyTemplate">                          
+        <property name="target">                          
+            <bean class="com.liusy.datapp.service.resource.impl.ResourceTableServiceImpl" autowire="byName"/>                          
+        </property>                          
+    </bean>                        
+<!-- ResourceTableService bean declare end -->                     
+<!-- StandardCategoryService bean declare begin -->                    
+   <bean id="standardCategoryService" parent="txProxyTemplate">                         
+        <property name="target">                         
+            <bean class="com.liusy.datapp.service.datastandard.impl.StandardCategoryServiceImpl" autowire="byName"/>                         
+        </property>                         
+    </bean>                       
+<!-- StandardCategoryService bean declare end -->                    
+<!-- StandardCodeService bean declare begin -->                   
+   <bean id="standardCodeService" parent="txProxyTemplate">                        
+        <property name="target">                        
+            <bean class="com.liusy.datapp.service.datastandard.impl.StandardCodeServiceImpl" autowire="byName"/>                        
+        </property>                        
+    </bean>                      
+<!-- StandardCodeService bean declare end -->                   
+<!-- StandardCodesetService bean declare begin -->                  
+   <bean id="standardCodesetService" parent="txProxyTemplate">                       
+        <property name="target">                       
+            <bean class="com.liusy.datapp.service.datastandard.impl.StandardCodesetServiceImpl" autowire="byName"/>                       
+        </property>                       
+    </bean>                     
+<!-- StandardCodesetService bean declare end -->                  
+<!-- StandardDataMetaService bean declare begin -->                 
+   <bean id="standardDataMetaService" parent="txProxyTemplate">                      
+        <property name="target">                      
+            <bean class="com.liusy.datapp.service.datastandard.impl.StandardDataMetaServiceImpl" autowire="byName"/>                      
+        </property>                      
+    </bean>                    
+<!-- StandardDataMetaService bean declare end -->                 
+<!-- StandardIndicatorService bean declare begin -->                
+   <bean id="standardIndicatorService" parent="txProxyTemplate">                     
+        <property name="target">                     
+            <bean class="com.liusy.datapp.service.datastandard.impl.StandardIndicatorServiceImpl" autowire="byName"/>                     
+        </property>                     
+    </bean>                   
+<!-- StandardIndicatorService bean declare end -->                
+<!-- SysPowerService bean declare begin -->             
+   <bean id="sysPowerService" parent="txProxyTemplate">                 
+        <property name="target">                 
+            <bean class="com.liusy.datapp.service.system.config.impl.SysPowerServiceImpl" autowire="byName"/>                 
+        </property>                 
+    </bean>               
+<!-- SysPowerService bean declare end -->             
+<!-- SysResourceUserService bean declare begin -->           
+   <bean id="sysResourceUserService" parent="txProxyTemplate">                
+        <property name="target">                
+            <bean class="com.liusy.datapp.service.system.org.impl.SysResourceUserServiceImpl" autowire="byName"/>                
+        </property>                
+    </bean>              
+<!-- SysResourceUserService bean declare end -->           
+<!-- SysUserRoleService bean declare begin -->          
+   <bean id="sysUserRoleService" parent="txProxyTemplate">               
+        <property name="target">               
+            <bean class="com.liusy.datapp.service.system.org.impl.SysUserRoleServiceImpl" autowire="byName"/>               
+        </property>               
+    </bean>             
+<!-- SysUserRoleService bean declare end -->          
+        
+<!-- SysResourceRoleService bean declare begin -->         
+   <bean id="sysResourceRoleService" parent="txProxyTemplate">              
+        <property name="target">              
+            <bean class="com.liusy.datapp.service.system.org.impl.SysResourceRoleServiceImpl" autowire="byName"/>              
+        </property>              
+    </bean>            
+<!-- SysResourceRoleService bean declare end -->         
+<!-- AnalysisDatasetService bean declare begin -->        
+   <bean id="analysisDatasetService" parent="txProxyTemplate">             
+        <property name="target">             
+            <bean class="com.liusy.datapp.service.analysis.impl.AnalysisDatasetServiceImpl" autowire="byName"/>             
+        </property>             
+    </bean>           
+<!-- AnalysisDatasetService bean declare end -->        
+<!-- AnalysisDatasetColumnService bean declare begin -->       
+   <bean id="analysisDatasetColumnService" parent="txProxyTemplate">            
+        <property name="target">            
+            <bean class="com.liusy.datapp.service.analysis.impl.AnalysisDatasetColumnServiceImpl" autowire="byName"/>            
+        </property>            
+    </bean>          
+<!-- AnalysisDatasetColumnService bean declare end -->       
+<!-- AnalysisDatasetConditionService bean declare begin -->      
+   <bean id="analysisDatasetConditionService" parent="txProxyTemplate">           
+        <property name="target">           
+            <bean class="com.liusy.datapp.service.analysis.impl.AnalysisDatasetConditionServiceImpl" autowire="byName"/>           
+        </property>           
+    </bean>         
+<!-- AnalysisDatasetConditionService bean declare end -->      
+<!-- AnalysisTemplateService bean declare begin -->     
+   <bean id="analysisTemplateService" parent="txProxyTemplate">          
+        <property name="target">          
+            <bean class="com.liusy.datapp.service.analysis.impl.AnalysisTemplateServiceImpl" autowire="byName"/>          
+        </property>          
+    </bean>        
+<!-- AnalysisTemplateService bean declare end -->     
+<!-- AnalysisTemplateParamsService bean declare begin -->    
+   <bean id="analysisTemplateParamsService" parent="txProxyTemplate">         
+        <property name="target">         
+            <bean class="com.liusy.datapp.service.analysis.impl.AnalysisTemplateParamsServiceImpl" autowire="byName"/>         
+        </property>         
+    </bean>       
+<!-- AnalysisTemplateParamsService bean declare end -->    
+<!-- AnalysisTemplateConfigService bean declare begin -->   
+   <bean id="analysisTemplateConfigService" parent="txProxyTemplate">        
+        <property name="target">        
+            <bean class="com.liusy.datapp.service.analysis.impl.AnalysisTemplateConfigServiceImpl" autowire="byName"/>        
+        </property>        
+    </bean>      
+<!-- AnalysisTemplateConfigService bean declare end -->   
+<!-- ResourceTableUserCfgService bean declare begin -->  
+   <bean id="resourceTableUserCfgService" parent="txProxyTemplate">       
+        <property name="target">       
+            <bean class="com.liusy.datapp.service.resource.impl.ResourceTableUserCfgServiceImpl" autowire="byName"/>       
+        </property>       
+    </bean>     
+<!-- ResourceTableUserCfgService bean declare end -->  
+<!-- ResourceColumnUserCfgService bean declare begin --> 
+   <bean id="resourceColumnUserCfgService" parent="txProxyTemplate">      
+        <property name="target">      
+            <bean class="com.liusy.datapp.service.resource.impl.ResourceColumnUserCfgServiceImpl" autowire="byName"/>      
+        </property>      
+    </bean>    
+<!-- ResourceColumnUserCfgService bean declare end --> 
+<!-- SysLogOperateService bean declare begin --> 
+   <bean id="sysLogOperateService" parent="txProxyTemplate">      
+        <property name="target">      
+            <bean class="com.liusy.datapp.service.system.log.impl.SysLogOperateServiceImpl" autowire="byName"/>      
+        </property>      
+    </bean>    
+<!-- SysLogOperateService bean declare end --> 
+</beans>                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          

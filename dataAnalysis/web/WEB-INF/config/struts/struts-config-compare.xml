@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>
+   <!-- 对比查询开始 -->
+   	<form-bean name="compareInfoForm" type="com.liusy.datapp.web.compare.form.CompareInfoForm"></form-bean>
+   	<form-bean name="compareTableForm" type="com.liusy.datapp.web.compare.form.CompareTableForm"></form-bean>
+   	<form-bean name="compareFilterForm" type="com.liusy.datapp.web.compare.form.CompareFilterForm"></form-bean>
+   	<form-bean name="compareRunInfoForm" type="com.liusy.datapp.web.compare.form.CompareRunInfoForm"></form-bean>
+   	<form-bean name="compareMainResultForm" type="com.liusy.datapp.web.compare.form.CompareMainResultForm"></form-bean>
+   	<form-bean name="compareResultRecordForm" type="com.liusy.datapp.web.compare.form.CompareResultRecordForm"></form-bean>
+   <!-- 对比查询结束 -->
+  </form-beans>
+
+  <!-- ========== Action Mapping Definitions =================================== -->
+  
+   <action-mappings>
+
+   <!-- 对比查询开始 -->
+   	<action path="/compare/compareInfo" scope="request" name="compareInfoForm" validate="true" type="com.liusy.datapp.web.compare.action.CompareInfoAction">
+   	   <forward name="LIST"   path="/pages/compare/compareInfo_list.jsp"/> 
+      <forward name="ADD"  path="/pages/compare/compareInfo_add.jsp" /> 
+      <forward name="EDIT" path="/pages/compare/compareInfo_modify.jsp" /> 
+      <forward name="CONFIG" path="/pages/compare/compareInfo_tabber.jsp" /> 
+   	</action>
+   	<action path="/compare/compareTable" scope="request" name="compareTableForm" validate="true" type="com.liusy.datapp.web.compare.action.CompareTableAction">
+   	   <forward name="SHOWBASE"   path="/pages/compare/compareTable_modify.jsp"/> 
+       <forward name="ADDRTABLE"   path="/pages/compare/rtable_list.jsp"/> 
+       <forward name="ADDPTABLE"   path="/pages/compare/ptable_list.jsp"/>
+       <forward name="ADDFIELD"   path="/pages/compare/main_table_fields.jsp"/>  
+       <forward name="ADDIND"   path="/pages/compare/ind_list.jsp"/> 
+   	</action>
+   	<action path="/compare/compareFilter" scope="request" name="compareFilterForm" validate="true" type="com.liusy.datapp.web.compare.action.CompareFilterAction">
+   	   <forward name="LIST"   path="/pages/compare/compareFilter_list.jsp"/> 
+      <forward name="ADD"  path="/pages/compare/compareFilter_modify.jsp" /> 
+      <forward name="EDIT" path="/pages/compare/compareFilter_modify.jsp" /> 
+     
+   	</action>
+   	
+   	<action path="/compare/compareRunInfo" scope="request" name="compareRunInfoForm" validate="true" type="com.liusy.datapp.web.compare.action.CompareRunInfoAction">
+   	   <forward name="LIST"   path="/pages/compare/compareRunInfo_list.jsp"/> 
+       <forward name="EDIT" path="/pages/compare/compareFilter_modify.jsp" /> 
+    </action>
+    
+    <action path="/compare/compareResult" scope="request" name="compareMainResultForm" validate="true" type="com.liusy.datapp.web.compare.action.CompareResultAction">
+   	   <forward name="LIST"   path="/pages/compare/compareResult.jsp"/>  
+    </action>
+    
+    <action path="/compare/compareResultRecord" scope="request" name="compareResultRecordForm" validate="true" type="com.liusy.datapp.web.compare.action.CompareResultRecordAction">
+   		<forward name="BASEQUERY" path="/pages/compare/result_base_list.jsp" redirect="false" />
+   		<forward name="BASEQUERYCOUNT" path="/pages/compare/result_query_count.jsp" redirect="false" />
+   	</action>
+   	
+    <!-- 对比查询结束 -->
+   </action-mappings>
+</struts-config>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.system.config">
+   <class name="SysResource" table="T_SYS_RESOURCE_INFO" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="resName" column="RES_NAME" type="string" not-null="false" length="64" />
+      <property name="resType" column="RES_TYPE" type="string" not-null="false" length="1" />
+      <property name="actionUrl" column="ACTION_URL" type="string" not-null="false" length="256" />
+      <property name="powerId" column="POWER_ID" type="integer" not-null="false" length="22" />
+      <property name="resCode" column="RES_CODE" type="string" not-null="false" length="32" />
+      <property name="remark" column="REMARK" type="string" not-null="false" length="256" />
+      <property name="orderNo" column="ORDER_NO" type="integer" not-null="false" length="22" />
+      <property name="parentId" column="PARENT_ID" type="integer" not-null="false" length="22" />
+   </class>	
+</hibernate-mapping>

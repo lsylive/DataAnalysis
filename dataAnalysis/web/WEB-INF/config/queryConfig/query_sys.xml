@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QUERY>
+ 
+<!-- 查询用户:SysUserAction 开始 -->
+	<SQLSCRIPT ID="GET_SYSUSER_PAGE">  
+		<QUERY>select a.id AS id, a.user_name AS userName, a.user_account AS userAccount, a.account_type as accountType,
+		              a.org_id AS orgId,a.dept_id AS deptId,a.user_status AS userStatus, a.remark AS remark  
+		       from t_sys_user_info a 
+		       where 1=1 ${queryString}
+		 </QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_RIGHTS">  
+		<QUERY>select a.id AS id, a.parent_id AS parentId, a.res_name AS name, a.remark AS remark  
+		       from t_sys_resource_info a where a.power_id=1
+		       order by a.res_code asc
+		 </QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_USER_ROLES">  t.IS_SPACETABLE
+		<QUERY>select a.id AS id, a.ROLE_NAME AS roleName, a.REMARK AS remark
+		       from t_sys_role_info a 
+		 </QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_USER_ROLES_R">  
+		<QUERY>select a.id AS id, a.ROLE_ID AS roleId, b.ROLE_NAME AS roleName,a.oper as oper
+		       from t_sys_user_role_r a, t_sys_role_info b
+		       where a.ROLE_ID=b.id and ${queryString}
+		 </QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_ROLE_USERS_R">  
+		<QUERY>select a.id AS id, a.USER_ID AS userId, b.USER_NAME AS userName, b.USER_ACCOUNT AS accountName,a.oper as oper
+		       from t_sys_user_role_r a, t_sys_user_info b
+		       where a.USER_ID=b.id and ${queryString}
+		 </QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_ROLE_RESOURCES_R">  
+		<QUERY>select a.id AS id, a.RES_ID AS resourceId, b.ROLE_NAME AS roleName, b.role_id AS roleId,a.status as status
+		       from t_sys_resource_role_r a, t_sys_role_info b
+		       where a.role_id=b.id and ${queryString}
+		 </QUERY>
+	</SQLSCRIPT>
+	<!-- 查询用户:SysUserAction 结束 -->
+	
+	<SQLSCRIPT ID="GET_SYSROLE_PAGE">
+		<QUERY>select a.id AS id, a.ROLE_CODE AS roleCode, a.ROLE_NAME AS roleName, a.ROLE_STATUS AS roleStatus, 
+		              a.ROLE_DESC AS roleDesc, a.REMARK AS remark, a.ROLE_TYPE as roleType 
+		              from t_sys_role_info a 
+		              where 1=1 ${queryString}
+		</QUERY>
+	</SQLSCRIPT>
+	
+	<SQLSCRIPT ID="GET_SYSCITY_PAGE">
+		<QUERY>select ID, NAME, CODE, SQUENCE_NO, REMARK from t_sys_city a where 1=1 ${queryString}</QUERY>
+	</SQLSCRIPT>
+	
+	<SQLSCRIPT ID="GET_SYSRESOURCETABLE_PAGE">
+		<QUERY>select t.id,t.cn_name,t.security_level,t.REMARK,c.name as city_name,s.name as category_name from t_resource_table t left join t_standard_category s on t.category_id=s.id left join t_sys_city c on t.city_code= c.code where (t.IS_SPACETABLE=0 or t.IS_SPACETABLE is null) ${queryString}</QUERY>
+	</SQLSCRIPT>
+	
+	<SQLSCRIPT ID="GET_SYSRESOURCECOLUMN_PAGE">
+		<QUERY>select ID,CN_NAME,NAME,DATA_TYPE,DEFAULT_VALUE,SECURITY_LEVEL,REMARK,SQUENCE_NO from t_resource_column t WHERE 1=1 ${queryString}</QUERY>
+	</SQLSCRIPT>
+	
+	<SQLSCRIPT ID="GET_STANDARDCATEGORY_PAGE">
+		<QUERY>select ID AS id, NAME AS name, CODE AS code, PARENT_ID AS parentId, SQUENCE_NO AS squenceNo, REMARK as remark, CITY_CODE AS cityCode from t_standard_category a where 1=1 ${queryString}</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_STANDARDCODESET_PAGE">
+		<QUERY>select t.id, t.category_id As categoryId, t.CODESET_NO AS codesetNo, t.NAME, t.CODE_EXPRESSION AS codeExpression, t.ENCODE_RULE AS encodeRule, t.TYPE, t.STANDARD_CODE AS standardCode, t.REMARK, g.NAME AS categoryName from t_standard_codeset t left join t_standard_category g on t.CATEGORY_ID = g.ID Where 1=1 ${queryString}</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_STANDARDCODE_PAGE">
+		<QUERY>select t.id, t.codeset_id as codesetId, t.name, t.value, t.status, t.remark from t_standard_code t where 1=1 ${queryString}</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_STANDARDDATAMETA_PAGE">
+		<QUERY>select id, indicator_id As indicatorId, category_id As categoryId, code, name, cn_name As cnName, abbreviations, synonyms, expression, data_type As dataType, data_format As dataFormat, measurement_unit As measurementUnit, codeset_no as codesetNo, data_range As dataRange, remark from t_standard_datameta t where 1=1 ${queryString}</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_STANDARDINDICATOR_PAGE">
+		<QUERY>select id, category_id As categoryId, cn_name As cnName, name, indicator_code As indicatorCode, remark from t_standard_indicator t where 1=1 ${queryString}</QUERY>
+	</SQLSCRIPT>
+	
+	<SQLSCRIPT ID="GET_PERSONALINFO_PAGE">
+		<QUERY>select t1.id AS id ,t2.user_account AS userAccount,t2.user_name AS userName,t4.org_name AS orgName,t3.dept_name AS deptName,
+				t1.available_size AS availableSize,t1.space_status AS spaceStatus 
+				 from t_personal_info t1,t_sys_user_info t2,t_sys_dept_info t3,t_sys_org_info t4 
+				where t1.user_id = t2.id and t2.dept_id = t3.id and t2.org_id = t4.id  ${queryString}</QUERY>
+	</SQLSCRIPT>
+
+	<SQLSCRIPT ID="GET_MEMOCLASS_PAGE">
+		<QUERY>select id, space_id, user_id,class_name,create_date,modify_date from t_personal_memo_class t where 1=1 ${queryString}</QUERY>
+	</SQLSCRIPT>
+	
+	<SQLSCRIPT ID="GET_MEMO_PAGE">
+		<QUERY>select t.id AS id,class_id AS classId,memo_title AS memoTitle,memo_content AS memoContent,class_name AS className,t.create_date AS createDate,t.modify_date AS modifyDate from t_personal_memo t left join t_personal_memo_class s on t.class_id=s.id where 1=1 ${queryString}</QUERY>
+	</SQLSCRIPT>
+	
+	<SQLSCRIPT ID="GET_SYSCODESET_PAGE">
+		<QUERY>select c.CN_NAME As cname,c.ID AS Id,c.En_name AS ename,c.REMARK AS remark from T_SYS_CODESET c where 1=1 ${queryString}</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_SYSCODE_PAGE">
+		<QUERY>select c.ID as id,c.ITEM_NAME as name, c.ITEM_VALUE as value, c.CODE_STATUS as status, c.REMARK as remark,s.CN_NAME as cname from t_SYS_code c left join T_SYS_CODESET s on c.cs_id=s.id where 1=1 ${queryString}</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_QUERYCONDITION_PAGE">
+		<QUERY>select p.id as id,p.subject_id as subjectid,p.table_id as tableid,p.query_name as queryName,p.query_type as queryType,to_char(create_date,'yyyy-MM-dd') as createdate from t_personal_query_conditions p where 1=1 ${queryString}</QUERY>
+		<!-- <QUERY>select p.id as id,p.subject_id as subjectid,p.table_id as tableid,p.query_name as queryName,p.query_type as queryType,(select sub_name from t_query_subject s where s.id=p.subject_id) as subjectname,(select t.cn_name from t_resource_table t where t.id=p.table_id) as tablename,to_char(create_date,'yyyy-MM-dd') as createdate from t_personal_query_conditions p where 1=1 ${queryString}</QUERY> -->
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_USERRESOURCETABLE_PAGE">
+		<QUERY>select t.id as id,t.cn_name as cnName,t.security_level as securitylevel,t.REMARK as remark,t.CREATE_DATE as createDate,t.RECORDE_COUNT as recordeCount,(case when t.ref_tableid is null then '外部导入' when t.ref_tableid is not null then '查询结果' end) as TABLETYPE from t_resource_table t  where t.IS_SPACETABLE=1 ${queryString}</QUERY>
+	</SQLSCRIPT>
+	
+	<SQLSCRIPT ID="GET_PROCESS_ARRANGE_PAGE">
+		<QUERY>select distinct u.id as ID,u.user_name as USERNAME from t_sys_user_info u left join t_sys_user_role_r ur on u.id=ur.user_id left join t_sys_role_info r on ur.role_id=r.id where (r.role_code='A004' or r.role_code='A005')</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_PROCESS_APPLICATION_PAGE">
+		<QUERY>select t.id as ID,t.VISIT_USER as VISIT_USER,t.VISIT_DATE AS VISIT_DATE,t.EMERGENCY_LEVEL AS EMERGENCY_LEVEL,t.STATUS as STATUS from t_process_application t where t.STATUS='0' ${queryString}</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_PROCESS_APPLICATION_WAIT_PAGE">
+		<QUERY>select distinct P.ID AS ID,p.VISIT_USER as VISIT_USER,p.VISIT_DATE AS VISIT_DATE,
+		              p.USER_ID AS USERID,p.EMERGENCY_LEVEL AS EMERGENCY_LEVEL,P.STATUS AS STATUS 
+		       from   t_process_application p,t_process_application_tache t  
+		       where  t.requisition_id=p.id and  t.STATUS='6' ${queryString}
+		</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_PROCESS_APPLICATION_ADMIN_WAIT">
+		<QUERY>select P.ID AS ID,p.VISIT_USER as VISIT_USER,p.VISIT_DATE AS VISIT_DATE,
+		              p.EMERGENCY_LEVEL AS EMERGENCY_LEVEL,P.STATUS AS STATUS 
+		       from   t_process_application p 
+		       where  p.STATUS='4' ${queryString}
+		</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_PROCESS_APPLICATION_DEALED_PAGE">
+		<QUERY>select distinct P.ID AS ID,p.VISIT_USER as VISIT_USER,p.VISIT_DATE AS VISIT_DATE,p.EMERGENCY_LEVEL AS EMERGENCY_LEVEL,P.STATUS AS STATUS from t_process_application p,t_process_application_tache t where (t.status='7') and p.id=t.requisition_id ${queryString}</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_PROCESS_APPLICATION_PIGEONHOLED_PAGE">
+		<QUERY>select p.ID AS ID,p.VISIT_USER as VISIT_USER,p.VISIT_DATE AS VISIT_DATE,p.EMERGENCY_LEVEL AS EMERGENCY_LEVEL,p.STATUS AS STATUS,p.EXAMINANT_ID AS EXAMINANTID,p.END_TIME AS ENDTIME from t_process_application p ,t_sys_user_info u where p.USER_ID=u.id and p.STATUS='5' ${queryString}</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_PROCESS_APPLICATION_RESULT_PAGE">
+		<QUERY>select P.ID AS ID,VISIT_USER as VISIT_USER,p.VISIT_DATE AS VISIT_DATE,p.EMERGENCY_LEVEL AS EMERGENCY_LEVEL,P.STATUS AS STATUS from t_process_application p where P.STATUS='5' ${queryString}</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_PROCESS_AFFIAR_COUNT">
+		<QUERY>select count(id) as cnt,t.examinant_id as userid from t_process_application t where t.examinant_id in(${userIds}) and t.status=4 group by t.examinant_id order by cnt</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_PROCESS_FINISH_COUNT">
+		<QUERY>select count(id) as cnt,t.examinant_id as userid from t_process_application t where t.examinant_id in(${userIds}) and t.status=5 group by t.examinant_id order by cnt</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_PROCESS_DISTRIBUTE_PAGE">
+		<QUERY>select t.id as id,t.app_code as code,t.app_title as title,t.app_content as content,u.user_name as username  from t_process_application t inner join t_sys_user_info u on t.examinant_id=u.id where t.status='4' ${queryString}</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_QUERY_SEARCHAUDIT_PAGE">
+		<QUERY>select t.id as ID,t.user_name as USERNAME,t.org_name as ORGNAME,t.dept_name as DEPTNAME,t.opt_time as OPTTIME,t.query_condition as CONDITION  from t_sys_log_operate t where 1=1 ${queryString}</QUERY>
+	</SQLSCRIPT>
+</QUERY>

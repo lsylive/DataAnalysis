@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.resource">
+   <class name="ResourceTable" table="T_RESOURCE_TABLE" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="modifyDate" column="MODIFY_DATE" type="date" not-null="false" length="7" />
+      <property name="type" column="TYPE" type="string" not-null="false" length="1" />
+      <property name="categoryId" column="CATEGORY_ID" type="integer" not-null="false" length="22" />
+      <property name="cityCode" column="CITY_CODE" type="string" not-null="false" length="32" />
+      <property name="createBy" column="CREATE_BY" type="string" not-null="false" length="32" />
+      <property name="securityLevel" column="SECURITY_LEVEL" type="string" not-null="false" length="1" />
+      <property name="modifyBy" column="MODIFY_BY" type="string" not-null="false" length="32" />
+      <property name="cnName" column="CN_NAME" type="string" not-null="false" length="128" />
+      <property name="createDate" column="CREATE_DATE" type="date" not-null="false" length="7" />
+      <property name="code" column="CODE" type="string" not-null="false" length="32" />
+      <property name="name" column="NAME" type="string" not-null="false" length="128" />
+      <property name="remark" column="REMARK" type="string" not-null="false" length="256" />
+      <property name="isSpaceTable" column="IS_SPACETABLE" type="string" not-null="false" length="1" />
+      <property name="spaceId" column="SPACE_ID" type="integer" not-null="false" />
+      <property name="refTableId" column="REF_TABLEID" type="integer" not-null="false" />
+      <property name="orde" column="ORDE" type="integer" not-null="false" />
+      <property name="recordeCount" column="RECORDE_COUNT" type="string" not-null="false" length="32" />
+   </class>	
+</hibernate-mapping>

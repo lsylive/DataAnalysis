@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>         
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">         
+         
+<beans default-lazy-init="true">         
+<!-- QuerySubjectDao bean declare begin -->         
+   <bean id="querySubjectDao" class="com.liusy.datapp.dao.query.impl.QuerySubjectDaoImpl" autowire="byName"/>         
+<!-- QuerySubjectDao bean declare end -->         
+<!-- QueryColumnCfgDao bean declare begin -->        
+   <bean id="queryColumnCfgDao" class="com.liusy.datapp.dao.query.impl.QueryColumnCfgDaoImpl" autowire="byName"/>  
+<!-- QueryColumnCfgDao bean declare end -->        
+<!-- SubjectTableRelationDao bean declare begin -->     
+   <bean id="subjectTableRelationDao" class="com.liusy.datapp.dao.query.impl.SubjectTableRelationDaoImpl" autowire="byName"/>     
+<!-- SubjectTableRelationDao bean declare end -->     
+<!-- SubjectTableColRelationDao bean declare begin -->    
+   <bean id="subjectTableColRelationDao" class="com.liusy.datapp.dao.query.impl.SubjectTableColRelationDaoImpl" autowire="byName"/>    
+<!-- SubjectTableColRelationDao bean declare end -->    
+<!-- SubjectColumnCfgDao bean declare begin -->   
+   <bean id="subjectColumnCfgDao" class="com.liusy.datapp.dao.query.impl.SubjectColumnCfgDaoImpl" autowire="byName"/>   
+<!-- SubjectColumnCfgDao bean declare end -->   
+<!-- QueryParamCfgDao bean declare begin --> 
+   <bean id="queryParamCfgDao" class="com.liusy.datapp.dao.query.impl.QueryParamCfgDaoImpl" autowire="byName"/> 
+<!-- QueryParamCfgDao bean declare end --> 
+	<!--  <bean id="jdbcDao" class="com.liusy.dataapplatform.base.dao.JdbcDao" >
+		<property name="dataSource">
+			<ref bean="dataSourceIq"/>
+		</property>
+		<property name="sqlGen">
+		<ref bean="sybaseSqlGen" />
+		</property>
+	</bean>-->
+	<bean id="synthesisQueryDao" class="com.liusy.datapp.dao.query.impl.SynthesisQueryDaoImpl">
+		  
+		<property name="dataSource">
+			<ref bean="dataSourceIq"/>
+		</property>
+		<property name="sqlGen">
+		<ref bean="sybaseSqlGen" />
+		</property>
+	<!--
+		<property name="dataSource">
+			<ref bean="dataSource"/>
+		</property>
+		<property name="sqlGen">
+		<ref bean="sqlGen" />
+		</property>
+	-->	
+	</bean>
+	
+		<bean id="synthesisQueryForCompareDao" class="com.liusy.datapp.dao.query.impl.SynthesisQueryForCompareDaoImpl">
+	 
+		<property name="dataSource">
+			<ref bean="dataSourceIq"/>
+		</property>
+		<property name="sqlGen">
+		<ref bean="sybaseSqlGen" />
+		</property>
+	
+	<!-- 	
+		<property name="dataSource">
+			<ref bean="dataSource"/>
+		</property>
+		<property name="sqlGen">
+		<ref bean="sqlGen" />
+		</property>
+	-->	
+	</bean>
+	
+	<bean id="synthesisTempSpaceDao" class="com.liusy.datapp.dao.query.impl.SynthesisTempSpaceDaoImpl">
+		<property name="dataSource">
+			<ref bean="dataSourcetmp"/>
+		</property>
+		<property name="sqlGen">
+		<ref bean="sqlGen" />
+		</property>
+		<property name="sqlScriptGenerator">
+		<ref bean="oracleScriptGen"/>
+		</property>
+	</bean>
+</beans>         
+         

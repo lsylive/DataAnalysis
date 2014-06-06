@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" backgroundColor="#00dce9ef" layout="absolute" applicationComplete="{initWindow();}">
+	<mx:Script><![CDATA[
+        //警告: 在未注册版本中，导出Flex项目时不生成Flex脚本,要生成Flex脚本，请到http://www.shankejingling.com/goumai.html购买完整版。
+
+    ]]></mx:Script>
+
+	<mx:DateValidator id="_StatisticInterfaceNode_DateValidator1" property="text" required="false" inputFormat="YYYY-MM-DD"/>
+	<mx:DetailWindow id="detailBox" visible="false" width="70%" height="70%" goClose="{detailBox.visible = false;}" hideEffect="zoomCloseDetail"/>
+	<mx:TitleWindow id="searchWin" styleName="controlPanel" visible="false" x="1" layout="vertical" y="1" width="80%" height="80%" title="分析" verticalScrollPolicy="auto" horizontalScrollPolicy="off" alpha="1" showCloseButton="true" backgroundAlpha="1" borderAlpha="1" textAlign="left" fontSize="12" horizontalAlign="center" borderThicknessBottom="1" borderThicknessLeft="1" borderThicknessTop="1" borderThicknessRight="1" borderColor="131586" backgroundColor="#00fbfdfc" roundedBottomCorners="true" cornerRadius="6" close="{searchWin.visible = false;}" showEffect="zoomOpen" hideEffect="zoomClose">
+		<mx:VBox width="100%" height="100%" horizontalAlign="center" verticalGap="10">
+			<mx:QueryWindow id="queryBox" width="100%" styleName="queryPanel" titleIcon="{StatisticInterfaceNode__embed_mxml_application_png_128945640}" horizontalAlign="center" borderColor="65793" borderStyle="solid" cornerRadius="3" ="{goQuery(event);}" goClose="{searchWin.visible = false;}"/>
+			<mx:DataGrid id="tabResult" width="100%" height="100%" columns="{[_StatisticInterfaceNode_DataGridColumn1_c(), _StatisticInterfaceNode_DataGridColumn2_c()]}"/>
+			<mx:HBox id="rowCountBox" width="100%" height="24" paddingLeft="5" paddingRight="5" horizontalAlign="left" verticalAlign="top">
+				<mx:Label id="rowCount" text="" fontSize="12"/>
+			</mx:HBox>
+		</mx:VBox>
+	</mx:TitleWindow>
+	<mx:HBox label="图表" autoLayout="true" height="100%" width="100%">
+		<mx:VBox width="20%" height="100%">
+			<mx:TitleWindow id="controlWin" styleName="controlPanel" width="100%" height="99%" x="1" y="1" layout="vertical" title="控制台" verticalGap="0" paddingLeft="0" paddingRight="0" paddingTop="0">
+				<mx:HBox width="100%" borderStyle="none" paddingRight="5" horizontalGap="0">
+					<mx:Label text="提示：按图标打开查询窗口" color="#00ff0101"/>
+				</mx:HBox>
+				<mx:HBox width="100%" height="36" verticalAlign="middle" horizontalGap="2" borderStyle="none" paddingLeft="5">
+					<mx:Image id="btnData" width="24" height="24" source="icons/table.png" alpha="0.6" toolTip=" 打开查询条件窗口 " ="{out(event);}" ="" click="{searchSelect();}"/>
+					<mx:Image id="btnUp" width="24" height="24" source="icons/goUp.png" alpha="0.6" toolTip=" 返回上级查询 " ="{out(event);}" ="" click="{goUp();}"/>
+				</mx:HBox>
+				<mx:HRule height="10" width="100%"/>
+				<mx:HBox width="100%" borderStyle="none" paddingRight="5" horizontalGap="0">
+					<mx:Label width="35%" text="显示方式：" textAlign="right" fontSize="12"/>
+					<mx:ComboBox id="chartType" width="65%" textAlign="left" change="{graphShift(false);}" dataProvider='{cards}'/>
+				</mx:HBox>
+				<mx:HRule height="10" width="100%"/>
+				<mx:VBox id="chartconfig" width="100%" verticalGap="0">
+					<mx:HBox id="a1" width="100%" paddingBottom="3" borderStyle="none" paddingRight="5" horizontalGap="0">
+						<mx:Label width="35%" text="显示记录数：" textAlign="right" fontSize="12"/>
+						<mx:ComboBox id="dataCount" width="65%" rowCount="10" textAlign="left" change="{changeDataCount();}" dataProvider='{dataCounts}'/>
+					</mx:HBox>
+					<mx:HBox id="a2" width="100%" paddingBottom="3" borderStyle="none" paddingRight="5" horizontalGap="0">
+						<mx:Label width="35%" text="Y轴起点：" textAlign="right" fontSize="12"/>
+						<mx:ComboBox id="ystartType" width="65%" selectedIndex="1" rowCount="10" textAlign="left" change="{changeystart();}" dataProvider='{ystart}'/>
+					</mx:HBox>
+					<mx:HBox id="p1" width="100%" paddingBottom="3" borderStyle="none" paddingRight="5" horizontalGap="0">
+						<mx:Label width="35%" text="标签位置：" textAlign="right" fontSize="12"/>
+						<mx:ComboBox id="pieLabelPos" width="65%" textAlign="left" dataProvider='{pieLabel}'/>
+					</mx:HBox>
+					<mx:HBox id="p2" width="100%" paddingBottom="3" borderStyle="none" paddingRight="5" horizontalGap="0">
+						<mx:Label width="35%" text="排序方式：" textAlign="right" fontSize="12"/>
+						<mx:ComboBox id="pieSortType" width="65%" textAlign="left" change="{changePieSort();}" dataProvider='{pieSortLabel}'/>
+					</mx:HBox>
+					<mx:HBox id="p3" width="100%" paddingBottom="3" borderStyle="none" paddingRight="5" horizontalGap="0">
+						<mx:Label width="35%" text="显示颜色：" textAlign="right" fontSize="12"/>
+						<mx:ComboBox id="pieColorType" width="65%" textAlign="left" change="{changePieColor();}" dataProvider='{pieColor}'/>
+					</mx:HBox>
+					<mx:HBox id="c1" width="100%" paddingBottom="3" borderStyle="none" paddingRight="5" horizontalGap="0">
+						<mx:Label width="35%" text="排序方式：" textAlign="right" fontSize="12"/>
+						<mx:ComboBox id="sortType" width="65%" textAlign="left" change="{changeSort();}" dataProvider='{sortLabel}'/>
+					</mx:HBox>
+					<mx:HBox id="c3" visible="false" includeInLayout="false" width="100%" paddingBottom="3" borderStyle="none" paddingRight="5" horizontalGap="0">
+						<mx:Label width="35%" text="X轴格式：" textAlign="right" fontSize="12"/>
+						<mx:ComboBox id="xDirectType" width="65%" textAlign="left" change="{xDirectTypechange();}" dataProvider='{xDirect}'/>
+					</mx:HBox>
+					<mx:HBox id="l1" width="100%" paddingBottom="3" borderStyle="none" paddingRight="5" horizontalGap="0">
+						<mx:Label width="35%" text="划线方式：" textAlign="right" fontSize="12"/>
+						<mx:ComboBox id="lineType" width="65%" textAlign="left" change="{changeLine();}" dataProvider='{lineLabel}'/>
+					</mx:HBox>
+				</mx:VBox>
+				<mx:HRule height="10" width="100%"/>
+				<mx:Text id="description" width="100%" textAlign="left" fontSize="12" paddingLeft="0" textIndent="0"/>
+			</mx:TitleWindow>
+		</mx:VBox>
+		<mx:Panel id="chartTitle" width="80%" height="100%" styleName="chartPanel" verticalAlign="middle" horizontalAlign="center">
+			<mx:Canvas id="chartContent" width="98%" height="98%">
+				<mx:PieChart id="pieChart" includeInLayout="false" x="0" y="0" visible="false" showDataTips="false" height="100%" width="100%" doubleClickEnabled="true" series="[_StatisticInterfaceNode_PieSeries1_i()]" fontSize="14" innerRadius="0" showEffect="Fide" hideEffect="Fide" moveEffect="Glow" focusInEffect="Glow" ="{regionDblClick(event);}" itemClick="{regionChange(event.hitData.item);}"/>
+				<mx:ColumnChart id="columnChart" includeInLayout="false" x="0" y="0" visible="false" showDataTips="false" doubleClickEnabled="true" width="100%" height="100%" filters="[_StatisticInterfaceNode_DropShadowFilter1_c()]" backgroundElements="[_StatisticInterfaceNode_GridLines1_c()]" verticalAxis="_StatisticInterfaceNode_LinearAxis1_i()" horizontalAxis="_StatisticInterfaceNode_CategoryAxis1_i()" series="[_StatisticInterfaceNode_ColumnSeries1_i()]" itemDoubleClick="{regionDblClick(event);}"/>
+				<mx:LineChart id="lineChart" includeInLayout="false" x="0" y="0" visible="false" showDataTips="false" width="100%" height="100%" filters="[_StatisticInterfaceNode_DropShadowFilter2_c()]" backgroundElements="[_StatisticInterfaceNode_GridLines2_c()]" verticalAxis="_StatisticInterfaceNode_LinearAxis2_i()" series="[_StatisticInterfaceNode_LineSeries1_i()]"/>
+			</mx:Canvas>
+			<mx:ControlBar height="60" width="100%" horizontalAlign="center">
+				<mx:Legend id="legend" height="100%" width="90%"/>
+			</mx:ControlBar>
+		</mx:Panel>
+	</mx:HBox>
+	<mx:Panel id="queryTip" width="250" height="50" x="200" y="100" layout="vertical" visible="false" borderStyle="solid" borderColor="5592405" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" cornerRadius="5" borderThickness="1" roundedBottomCorners="true" headerHeight="0" verticalAlign="middle">
+		<mx:HBox height="100%" width="100%" verticalAlign="middle" horizontalGap="2" borderStyle="none" paddingLeft="5">
+			<mx:Image id="rimage" width="32" height="32" source="icons/loading.swf"/>
+			<mx:Label text="正在查询数据，请稍候......" fontSize="14" fontWeight="bold"/>
+		</mx:HBox>
+	</mx:Panel>
+	<mx:Panel id="childPanel" x="0" y="0" height="100%" width="100%" layout="vertical" visible="false" borderStyle="none" borderThickness="0" borderThicknessLeft="0" borderThicknessTop="0" borderThicknessBottom="0" borderThicknessRight="0" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" cornerRadius="5" backgroundColor="#00ffffff" roundedBottomCorners="true" headerHeight="0" verticalAlign="middle" backgroundAlpha="1">
+		<mx:SWFLoader id="childChart" x="0" y="0" height="100%" width="100%"/>
+	</mx:Panel>
+
+	<mx:Style>/* //警告: 在未注册版本中，导出Flex项目时不生成Flex脚本,要生成Flex脚本，请到http://www.shankejingling.com/goumai.html购买完整版。
+ */</mx:Style>
+</mx:Application>

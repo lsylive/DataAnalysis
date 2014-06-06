@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>
+  <!-- 查询配置开始 -->
+  	<form-bean name="subjectClassifyForm" type="com.liusy.datapp.web.query.form.SubjectClassfiyForm"></form-bean>
+  	<form-bean name="querySubjectForm" type="com.liusy.datapp.web.query.form.QuerySubjectForm"></form-bean>
+  	<form-bean name="subjectSythesisCfgForm" type="com.liusy.datapp.web.query.form.SubjectSynthesisCfgForm"></form-bean>
+ 	<form-bean name="synthesisQueryForm" type="com.liusy.datapp.web.query.form.SynthesisQueryForm"></form-bean>
+ 	<form-bean name="columnSynthesisConfigForm" type="com.liusy.datapp.web.query.form.ColumnSynthesisConfigForm"></form-bean>
+ 	 <!-- 查询配置结束 -->
+   <!-- 综合查询开始 -->
+   	<form-bean name="commSubjectQueryForm" type="com.liusy.datapp.web.dynamicquery.form.CommSubjectQueryForm"></form-bean>
+   	<form-bean name="subjectBatchQueryForm" type="com.liusy.datapp.web.dynamicquery.form.SubjectBatchQueryForm"></form-bean>
+   	<form-bean name="classifySubjectQueryForm" type="com.liusy.datapp.web.dynamicquery.form.ClassifySubjectQueryForm"></form-bean>
+   	<form-bean name="advancedQueryForm" type="com.liusy.datapp.web.dynamicquery.form.AdvancedQueryForm"></form-bean>
+   	<form-bean name="userDefinedQueryForm" type="com.liusy.datapp.web.dynamicquery.form.UserDefinedQueryForm"></form-bean>
+   	<form-bean name="queryDetailForm" type="com.liusy.datapp.web.dynamicquery.form.QueryDetailForm"></form-bean>
+   	<form-bean name="queryConditionForm" type="com.liusy.datapp.web.dynamicquery.form.QueryConditionForm"></form-bean>
+   	<form-bean name="searchEngineForm" type="com.liusy.datapp.web.dynamicquery.form.SearchEngineForm"></form-bean>
+   <!-- 综合查询结束 -->
+   	<form-bean name="imageForm" type="com.liusy.datapp.web.image.form.ImageForm"></form-bean>
+  </form-beans>
+
+  <!-- ========== Action Mapping Definitions =================================== -->
+   <!-- 查询配置开始 -->
+   <action-mappings>
+   <action path="/querycfg/subjectCfg" scope="request" name="subjectSythesisCfgForm" validate="true" type="com.liusy.datapp.web.query.action.SubjectCfgAction">
+   	<forward name="LIST" path="/pages/system/subject/subject_cfg.jsp" redirect="false"></forward>
+   	</action>
+   	<action path="/querycfg/classifySubject" scope="request" name="subjectClassifyForm" validate="true" type="com.liusy.datapp.web.query.action.SubjectClassifyAction">
+   	<forward name="LIST" path="/pages/system/subject/classifysubject_cfg.jsp"></forward>
+   	<forward name="MODIFY" path="/pages/system/subject/classifysubject_modify.jsp"></forward>
+   	</action>
+   	<action path="/querycfg/commSubject" scope="request" name="querySubjectForm" validate="true" type="com.liusy.datapp.web.query.action.QuerySubjectAction">
+   	<forward name="LIST" path="/pages/system/subject/commsubject_list.jsp" redirect="false"></forward>
+   	<forward name="ADD" path="/pages/system/subject/commsubject_add.jsp" redirect="false"></forward>
+   	<forward name="EDIT" path="/pages/system/subject/commsubject_edit.jsp" redirect="false"></forward>
+   	<forward name="ADDTABLE" path="/pages/system/subject/table_list.jsp" redirect="false"></forward>
+   	<forward name="SAVETABLE" path="/pages/system/subject/savetableOk.jsp" redirect="false"></forward>
+   	</action>
+   	<action path="/querycfg/subjectSynthesisCfg" scope="request" name="subjectSythesisCfgForm" validate="true" type="com.liusy.datapp.web.query.action.SubjectSynthesisCfgAction">
+   	<forward name="LIST" path="/pages/system/subject/commsubjectcfg_list.jsp" redirect="false"></forward>
+   	<forward name="ADD" path="/pages/system/subject/commsubjectcfg_add.jsp" redirect="false"></forward>
+   	<forward name="EDIT" path="/pages/system/subject/commsubjectcfg_edit.jsp" redirect="false"></forward>
+   	</action>
+   	<action path="/querycfg/classifySynthesisCfg" scope="request" name="subjectSythesisCfgForm" validate="true" type="com.liusy.datapp.web.query.action.ClassifySynthesisCfgAction">
+   	<forward name="LIST" path="/pages/system/subject/classifysubjectcfg_list.jsp" redirect="false"></forward>
+   	<forward name="ADD" path="/pages/system/subject/classifysubjectcfg_add.jsp" redirect="false"></forward>
+   	<forward name="EDIT" path="/pages/system/subject/classifysubjectcfg_edit.jsp" redirect="false"></forward>
+   	</action>
+   <action path="/querycfg/columnSynthesisCfg" scope="request" name="columnSynthesisConfigForm" validate="true" type="com.liusy.datapp.web.query.action.ColumnSynthesisConfigAction">
+  	<forward name="MODIFY" path="/pages/system/resource/columnquery_cfg.jsp" redirect="false"></forward>
+  	<forward name="INITCFG" path="/pages/system/resource/tablecolumn_cfg.jsp" redirect="false"></forward>
+   </action>
+   <!-- 查询配置结束 -->
+   <!-- 综合查询开始 -->
+   	<action path="/query/commSubjectQuery" scope="request" name="commSubjectQueryForm" validate="true" type="com.liusy.datapp.web.dynamicquery.action.CommSubjectQueryAction">
+   	<forward name="LIST" path="/pages/dynamicquery/commsubject/commsubject_tree.jsp" redirect="false"></forward>
+   	<forward name="SHOWQUERY" path="/pages/dynamicquery/commsubject/commsubjectquery.jsp" redirect="false"></forward>
+   	<forward name="QUERYOVERVIEW" path="/pages/dynamicquery/commsubject/commsubjectquery_list.jsp" redirect="false"></forward>
+    <forward name="QUERYCOUNT" path="/pages/dynamicquery/commsubject/commsubjectquery_count.jsp" redirect="false"></forward>
+    <forward name="QUERYLIST" path="/pages/dynamicquery/commsubject/commsubjectquery_result.jsp" redirect="false"></forward>
+   	<forward name="QUERYDETAIL" path="/pages/dynamicquery/commsubject/viewDetail.jsp" redirect="false"></forward>
+   	<forward name="SAVEPARAM" path="/pages/dynamicquery/commsubject/saveparamresult.jsp" redirect="false"></forward>
+   	<forward name="BLANK" path="/pages/dynamicquery/commsubject/commsubjectquery_blank.jsp" redirect="false"></forward>
+   	</action>
+   	<action path="/query/subjectBatchQuery" scope="request" name="subjectBatchQueryForm" validate="true" type="com.liusy.datapp.web.dynamicquery.action.SubjectBatchQueryAction">
+   	<forward name="COMMBATCH" path="/pages/dynamicquery/commsubject/commbatchquery.jsp" redirect="false"></forward>
+    <forward name="COMMBATCHGRID" path="/pages/dynamicquery/commsubject/commbatchgridquery.jsp" redirect="false"></forward>
+    <forward name="UPLOADFILE" path="/pages/dynamicquery/commsubject/uploadbatchfile.jsp" redirect="false"></forward>
+    <forward name="QUERYOVERVIEW" path="/pages/dynamicquery/commsubject/commbatchquery_list.jsp" redirect="false"></forward>
+    <forward name="TOTALCOUNT" path="/pages/dynamicquery/commsubject/commbatchquery_totalcount.jsp" redirect="false"></forward>
+    <forward name="QUERYCOUNT" path="/pages/dynamicquery/commsubject/commbatchquery_count.jsp" redirect="false"></forward>
+    <forward name="QUERYLIST" path="/pages/dynamicquery/commsubject/commbatchquery_result.jsp" redirect="false"></forward>
+   	<forward name="QUERYDETAIL" path="/pages/dynamicquery/commsubject/viewDetail.jsp" redirect="false"></forward>
+   	<forward name="BLANK" path="/pages/dynamicquery/commsubject/commsubjectquery_blank.jsp" redirect="false"></forward>
+   	
+   	</action>
+   	<action path="/query/classifySubjectQuery" scope="request" name="classifySubjectQueryForm" validate="true" type="com.liusy.datapp.web.dynamicquery.action.ClassifySubjectQueryAction">
+   	<forward name="LIST" path="/pages/dynamicquery/classifysubject/classifysubject_tree.jsp" redirect="false"></forward>
+    <forward name="SHOWQUERY" path="/pages/dynamicquery/classifysubject/classifysubjectquery.jsp" redirect="false"></forward>
+    <forward name="QUERYCOUNT" path="/pages/dynamicquery/classifysubject/classifysubjectquery.jsp" redirect="false"></forward>
+   	
+   	</action>
+   	<action path="/query/userDefinedQuery" scope="request" name="userDefinedQueryForm" validate="true" type="com.liusy.datapp.web.dynamicquery.action.UserDefinedQueryAction">
+   	<forward name="LIST" path="/pages/dynamicquery/advancedquery/userDefinedQuery_list.jsp" redirect="false"></forward>
+   	<forward name="LISTSIMPLE" path="/pages/dynamicquery/advancedquery/userSimpleQuery_list.jsp" redirect="false"></forward>
+    <forward name="SHOWQUERY" path="/pages/dynamicquery/advancedquery/userDefinedQuery_result.jsp" redirect="false"></forward>
+    <forward name="QUERYCOUNT" path="/pages/dynamicquery/classifysubject/classifysubjectquery.jsp" redirect="false"></forward>
+   	<forward name="SHOWSIMPLE" path="/pages/dynamicquery/advancedquery/userSimpleQuery_result.jsp" redirect="false"></forward>
+   	<forward name="ADVANCEOVERVIEW" path="/pages/dynamicquery/advancedquery/userDefinedQuery_tab.jsp" redirect="false"></forward>
+   	<forward name="SIMPLEOVERVIEW" path="/pages/dynamicquery/advancedquery/userSimpleQuery_tab.jsp" redirect="false"></forward>
+   	
+   	</action>
+   	
+   	<action path="/dynamicquery/advancedquery" scope="request" name="advancedQueryForm" validate="true" type="com.liusy.datapp.web.dynamicquery.action.AdvancedQueryAction">
+   	<forward name="LIST" path="/pages/dynamicquery/advancedquery/advancedquerytable_list.jsp" redirect="false"></forward>    	
+   	<forward name="MAIN" path="/pages/dynamicquery/advancedquery/advancedQueryMain.jsp" redirect="false"></forward> 
+   	<forward name="BASEQUERY" path="/pages/dynamicquery/advancedquery/advancedQuerybase_list.jsp" redirect="false" />
+   	<forward name="BASEQUERYCOUNT" path="/pages/dynamicquery/advancedquery/base_query_count.jsp" redirect="false" />
+   	<forward name="SHOWEXPORTEXCEL" path="/pages/dynamicquery/advancedquery/downloadfile.jsp" redirect="false" />
+   	<forward name="BLANK" path="/pages/dynamicquery/commsubject/commsubjectquery_blank.jsp" redirect="false"></forward>
+   	</action>
+   	
+   	<action path="/dynamicquery/advancedbatch" scope="request" name="advancedQueryForm" validate="true" type="com.liusy.datapp.web.dynamicquery.action.AdvancedBatchQueryAction">
+   	<forward name="TOBATCHPAGE" path="/pages/dynamicquery/advancedquery/advancedQuerybatch.jsp" redirect="false" />
+   	<forward name="TOBATCHCOUNT" path="/pages/dynamicquery/advancedquery/advancedQuerybatchcount_list.jsp" redirect="false" />
+   	<forward name="SEARCHCONDITION" path="/pages/dynamicquery/advancedquery/singlebatchtabled_list.jsp" redirect="false" />
+   	
+   	</action>
+   	<action path="/dynamicquery/queryDetail" scope="request" name="queryDetailForm" validate="true" type="com.liusy.datapp.web.dynamicquery.action.QueryDetailAction">
+   	<forward name="LIST" path="/pages/dynamicquery/commsubject/viewDetail.jsp" redirect="false" />
+   	<forward name="LISTBATCH" path="/pages/dynamicquery/favorite/showfavorite.jsp" redirect="false" />
+  
+   	</action>
+   	<action path="/dynamicquery/queryCondition" scope="request" name="queryConditionForm" validate="true" type="com.liusy.datapp.web.dynamicquery.action.QueryConditionAction">
+   	
+  
+   	</action>
+    <!-- 综合查询结束 -->
+    <!-- 搜索引擎查询开始 -->
+    <action path="/dynamicquery/searchEngine" scope="request" name="searchEngineForm" validate="true"  type="com.liusy.datapp.web.dynamicquery.action.SearchEngineAction">
+    <forward name="INDEX" path="/pages/dynamicquery/searchEngine/index.jsp"></forward>
+    <forward name="RESULT" path="/pages/dynamicquery/searchEngine/results.jsp"></forward>
+    </action>
+    
+    <!-- 搜索引擎查询结束 -->
+   	<action path="/image/imageAction" scope="request" name="imageForm" validate="true" type="com.liusy.datapp.web.image.action.ImageAction">
+   	</action>
+   </action-mappings>
+</struts-config>

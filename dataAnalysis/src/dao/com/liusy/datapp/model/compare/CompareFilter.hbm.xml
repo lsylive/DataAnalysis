@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.compare">
+   <class name="CompareFilter" table="T_COMPARE_FILTER" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="filterOperator" column="FILTER_OPERATOR" type="string" not-null="false" length="32" />
+      <property name="compId" column="COMP_ID" type="integer" not-null="false" length="22" />
+      <property name="columnId" column="COLUMN_ID" type="integer" not-null="false" length="22" />
+      <property name="filterValue" column="FILTER_VALUE" type="string" not-null="false" length="64" />
+   </class>	
+</hibernate-mapping>

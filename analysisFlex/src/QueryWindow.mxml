@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" width="600" height="100" layout="vertical">
+	<mx:Script><![CDATA[
+        //警告: 在未注册版本中，导出Flex项目时不生成Flex脚本,要生成Flex脚本，请到http://www.shankejingling.com/goumai.html购买完整版。
+
+    ]]></mx:Script>
+
+	<mx:DateValidator id="_QueryWindow_DateValidator1" property="text" required="false" inputFormat="YYYY-MM-DD"/>
+	<mx:Grid id="grdParameters" width="96%" horizontalScrollPolicy="off" verticalScrollPolicy="off" horizontalAlign="center" verticalGap="0" verticalAlign="middle" horizontalGap="5">
+		<mx:GridRow id="row1" width="100%" height="27">
+			<mx:GridItem id="cell1_1" width="100%" height="100%"/>
+		</mx:GridRow>
+	</mx:Grid>
+	<mx:Grid id="grdMultiParameters" width="96%" height="61" visible="false" includeInLayout="false" horizontalScrollPolicy="off" verticalScrollPolicy="off" verticalGap="1" horizontalGap="1" backgroundColor="#00010101" borderThickness="1" borderStyle="solid" borderColor="0">
+		<mx:GridRow id="headerRow" width="100%" height="29">
+			<mx:GridItem width="60" verticalAlign="middle" horizontalAlign="center" backgroundColor="#00fffcfc">
+				<mx:Button id="addParaRow" width="50" label="添加" click="{addParaRow_clickHandler(event);}"/>
+			</mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow id="paraRow0" width="100%" height="29">
+			<mx:GridItem width="60" verticalAlign="middle" horizontalAlign="left" paddingLeft="2" backgroundColor="#00fffcfc"/>
+		</mx:GridRow>
+	</mx:Grid>
+	<mx:HBox id="btnBox" height="30" paddingLeft="5" paddingRight="5" verticalAlign="middle">
+		<mx:Button id="btnQuery" label="分析" width="90" height="30" icon="_embed_mxml_tick_png_430633912" click="{goQuery(event);}"/>
+		<mx:Label id="sep" width="20" visible="false" includeInLayout="false"/>
+		<mx:Button id="btnClose" label="显示图" visible="false" includeInLayout="false" height="30" width="90" icon="_embed_mxml_icons_Exit_png_932773307" click="{goClose(event);}"/>
+	</mx:HBox>
+
+	<mx:Style>/* //警告: 在未注册版本中，导出Flex项目时不生成Flex脚本,要生成Flex脚本，请到http://www.shankejingling.com/goumai.html购买完整版。
+ */</mx:Style>
+</mx:TitleWindow>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.system.org">
+   <class name="SysUser" table="T_SYS_USER_INFO" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="chineseAccount" column="CHINESE_ACCOUNT" type="string" not-null="false" length="32" />
+      <property name="adminLevel" column="ADMIN_LEVEL" type="string" not-null="false" length="1" />
+      <property name="updatedate" column="UPDATEDATE" type="date" not-null="false" length="7" />
+      <property name="accountType" column="ACCOUNT_TYPE" type="string" not-null="false" length="1" />
+      <property name="orgId" column="ORG_ID" type="integer" not-null="false" length="22" />
+      <property name="userStatus" column="USER_STATUS" type="string" not-null="false" length="2" />
+      <property name="userAccount" column="USER_ACCOUNT" type="string" not-null="true" length="64" />
+      <property name="orderNo" column="ORDER_NO" type="integer" not-null="false" length="22" />
+      <property name="deptId" column="DEPT_ID" type="integer" not-null="false" length="22" />
+      <property name="alpSearch" column="ALP_SEARCH" type="string" not-null="false" length="128" />
+      <property name="caAccount" column="CA_ACCOUNT" type="string" not-null="false" length="32" />
+      <property name="remark" column="REMARK" type="string" not-null="false" length="256" />
+      <property name="userName" column="USER_NAME" type="string" not-null="true" length="16" />
+      <property name="userPassword" column="USER_PASSWORD" type="string" not-null="false" length="32" />
+   </class>	
+</hibernate-mapping>

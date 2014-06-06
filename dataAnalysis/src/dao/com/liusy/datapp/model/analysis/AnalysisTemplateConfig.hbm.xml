@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.analysis">
+   <class name="AnalysisTemplateConfig" table="T_ANALYSIS_TEMPLATE_CONFIG" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="configValue" column="CONFIG_VALUE" type="string" not-null="false" length="4000" />
+      <property name="configType" column="CONFIG_TYPE" type="string" not-null="false" length="2" />
+      <property name="name" column="NAME" type="string" not-null="false" length="32" />
+      <property name="templateId" column="TEMPLATE_ID" type="integer" not-null="false" length="22" />
+      <property name="remark" column="REMARK" type="string" not-null="false" length="256" />
+   </class>	
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.datastandard">
+   <class name="StandardIndicator" table="T_STANDARD_INDICATOR" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="modifyDate" column="MODIFY_DATE" type="date" not-null="false" length="7" />
+      <property name="categoryId" column="CATEGORY_ID" type="integer" not-null="false" length="22" />
+      <property name="createBy" column="CREATE_BY" type="string" not-null="false" length="32" />
+      <property name="indicatorCode" column="INDICATOR_CODE" type="string" not-null="false" length="32" />
+      <property name="name" column="NAME" type="string" not-null="false" length="32" />
+      <property name="modifyBy" column="MODIFY_BY" type="string" not-null="false" length="32" />
+      <property name="createDate" column="CREATE_DATE" type="date" not-null="false" length="7" />
+      <property name="cnName" column="CN_NAME" type="string" not-null="false" length="64" />
+      <property name="remark" column="REMARK" type="string" not-null="false" length="256" />
+   </class>	
+</hibernate-mapping>

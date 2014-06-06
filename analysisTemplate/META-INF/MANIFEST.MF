@@ -1,0 +1,34 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: DataAdminPlatform Plug-in
+Bundle-SymbolicName: DataAdminPlatform; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.liusy.analysismodel.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime.compatibility;resolution:=optional,
+ org.eclipse.core.runtime.compatibility.auth,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.views;resolution:=optional,
+ org.eclipse.gef,
+ org.eclipse.core.resources,
+ org.eclipse.ui.ide,
+ org.eclipse.jface.text,
+ org.eclipse.ui.editors,
+ org.eclipse.ui.forms
+Eclipse-LazyStart: true
+Bundle-ClassPath: lib/baseline.jar,
+ lib/commons-beanutils.jar,
+ lib/commons-logging.jar,
+ lib/jdom-1.0.jar,
+ lib/log4j-1.2.11.jar,
+ lib/ojdbc14.jar,
+ lib/swt-grouplayout.jar,
+ lib/org.eclipse.core.databinding_1.0.1.M20070822-0800.jar,
+ lib/org.eclipse.core.databinding.beans_1.0.1.M20070910-0800b.jar,
+ lib/org.eclipse.jface.databinding_1.1.1.M20080207-0800.jar,
+ src-model/,
+ lib/edtftpj.jar,
+ lib/jconn3.jar,
+ .,
+ lib/IntelAnalysisModel.jar
+Plugin-Class: com.liusy.analysismodel.Activator

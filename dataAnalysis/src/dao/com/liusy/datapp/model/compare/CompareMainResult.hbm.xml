@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.compare">
+   <class name="CompareMainResult" table="T_COMPARE_MAINRESULT" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="slaveTableName" column="SLAVETABLE_NAME" type="string" not-null="false" length="64" />
+      <property name="processPkId" column="PROCESSED_PKID" type="integer" not-null="false" length="22" />
+      <property name="status" column="STATUS" type="string" not-null="false" length="1" />
+      <property name="runId" column="RUN_ID" type="integer" not-null="false" length="22" />
+   </class>	
+</hibernate-mapping>

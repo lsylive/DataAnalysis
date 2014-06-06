@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.analysis">
+   <class name="AnalysisDataset" table="T_ANALYSIS_DATASET" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="modifyDate" column="MODIFY_DATE" type="date" not-null="false" length="7" />
+      <property name="resourceId" column="RESOURCE_ID" type="integer" not-null="false" length="22" />
+      <property name="createBy" column="CREATE_BY" type="integer" not-null="false" length="22" />
+      <property name="name" column="NAME" type="string" not-null="false" length="64" />
+      <property name="modifyBy" column="MODIFY_BY" type="integer" not-null="false" length="22" />
+      <property name="resourceName" column="RESOURCE_NAME" type="string" not-null="false" length="64" />
+      <property name="createDate" column="CREATE_DATE" type="date" not-null="false" length="7" />
+      <property name="templateId" column="TEMPLATE_ID" type="integer" not-null="false" length="22" />
+      <property name="additionSql" column="ADDITION_SQL" type="string" not-null="false" length="4000" />
+      <property name="sqlScript" column="SQL_SCRIPT" type="string" not-null="false" length="4000" />
+      <property name="remark" column="REMARK" type="string" not-null="false" length="256" />
+   </class>	
+</hibernate-mapping>

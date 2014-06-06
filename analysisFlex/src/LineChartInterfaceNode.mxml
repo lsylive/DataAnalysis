@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" backgroundColor="#00dce9ef" layout="absolute" applicationComplete="{initWindow();}">
+	<mx:Script><![CDATA[
+        //警告: 在未注册版本中，导出Flex项目时不生成Flex脚本,要生成Flex脚本，请到http://www.shankejingling.com/goumai.html购买完整版。
+
+    ]]></mx:Script>
+
+	<mx:DateValidator id="_LineChartInterfaceNode_DateValidator1" property="text" required="false" inputFormat="YYYY-MM-DD"/>
+	<mx:TitleWindow id="searchWin" styleName="controlPanel" visible="false" x="1" layout="vertical" y="1" width="80%" height="80%" title="分析" verticalScrollPolicy="auto" horizontalScrollPolicy="off" alpha="1" showCloseButton="true" backgroundAlpha="1" borderAlpha="1" textAlign="left" fontSize="12" horizontalAlign="center" borderThicknessBottom="1" borderThicknessLeft="1" borderThicknessTop="1" borderThicknessRight="1" borderColor="131586" backgroundColor="#00fbfdfc" roundedBottomCorners="true" cornerRadius="6" close="{searchWin.visible = false;}" showEffect="zoom" hideEffect="zoom">
+		<mx:VBox width="100%" height="100%" horizontalAlign="center" verticalGap="10">
+			<mx:Grid id="grdParameters" width="100%" horizontalScrollPolicy="off" verticalScrollPolicy="off" horizontalAlign="center" verticalGap="0" verticalAlign="middle" horizontalGap="5">
+				<mx:GridRow id="row1" width="100%" height="27">
+					<mx:GridItem id="cell1_1" width="100%" height="100%"/>
+				</mx:GridRow>
+			</mx:Grid>
+			<mx:HBox id="btnBox" height="30" paddingLeft="5" paddingRight="5" verticalAlign="middle">
+				<mx:Button id="btnQuery" label="查询" height="25" width="70" click="{goQuery(event);}"/>
+				<mx:Label width="20"/>
+				<mx:Button id="btnClose" label="关闭" height="25" width="70" click="{searchWin.visible = false;}"/>
+			</mx:HBox>
+			<mx:DataGrid id="tabResult" width="100%" height="100%" columns="{[_LineChartInterfaceNode_DataGridColumn1_c(), _LineChartInterfaceNode_DataGridColumn2_c()]}"/>
+		</mx:VBox>
+	</mx:TitleWindow>
+	<mx:HBox label="图表" autoLayout="true" height="100%" width="100%">
+		<mx:VBox width="20%" height="100%">
+			<mx:TitleWindow id="controlWin" styleName="controlPanel" width="100%" height="99%" x="1" y="1" layout="vertical" title="控制台" verticalGap="5" paddingLeft="0" paddingRight="0" paddingTop="0">
+				<mx:HBox width="100%" height="36" verticalAlign="middle" horizontalGap="2" borderStyle="none" paddingLeft="5">
+					<mx:Image id="btnData" width="24" height="24" source="icons/table.png" alpha="0.6" toolTip=" 打开查询条件窗口 " ="{out(event);}" ="" click="{searchSelect();}"/>
+				</mx:HBox>
+				<mx:HRule width="100%"/>
+				<mx:VBox id="chartconfig" width="100%" verticalGap="0">
+					<mx:HBox id="c1" width="100%" paddingBottom="3" borderStyle="none" paddingRight="5" horizontalGap="0">
+						<mx:Label width="35%" text="排序方式：" textAlign="right" fontSize="12"/>
+						<mx:ComboBox id="sortType" width="65%" textAlign="left" change="{changeSort();}" dataProvider='{sortLabel}'/>
+					</mx:HBox>
+					<mx:HBox id="l1" width="100%" paddingBottom="3" borderStyle="none" paddingRight="5" horizontalGap="0">
+						<mx:Label width="35%" text="划线方式：" textAlign="right" fontSize="12"/>
+						<mx:ComboBox id="lineType" width="65%" textAlign="left" change="{changeLine();}" dataProvider='{lineLabel}'/>
+					</mx:HBox>
+				</mx:VBox>
+				<mx:HRule width="100%"/>
+				<mx:Text id="description" width="100%" textAlign="left" fontSize="12" paddingLeft="0" textIndent="0"/>
+				<mx:HBox width="100%">
+					<mx:Label text="起始值：" width="35%" textAlign="right"/>
+					<mx:TextInput id="txtStart" width="65%" keyDown="{txtStart_keyDownHandler(event);}"/>
+				</mx:HBox>
+				<mx:HBox width="100%">
+					<mx:Label text="结束值：" width="35%" textAlign="right"/>
+					<mx:TextInput id="txtEnd" width="65%" keyDown="{txtEnd_keyDownHandler(event);}"/>
+				</mx:HBox>
+				<mx:HBox width="100%">
+					<mx:Label text="数值步长：" width="35%" textAlign="right"/>
+					<mx:TextInput id="txtStepLength" width="65%" keyDown="{txtStepLength_keyDownHandler(event);}"/>
+				</mx:HBox>
+				<mx:HBox width="100%">
+					<mx:Label text="日期步长：" width="35%" textAlign="right"/>
+					<mx:ComboBox id="txtDateStepLength" width="65%" textAlign="left" change="{txtDateStepLength_changeHandler(event);}"/>
+				</mx:HBox>
+			</mx:TitleWindow>
+		</mx:VBox>
+		<mx:Panel id="chartTitle" width="80%" height="100%" styleName="chartPanel" verticalAlign="middle" horizontalAlign="center">
+			<mx:Canvas id="chartContent" width="98%" height="98%">
+				<mx:LineChart id="lineChart" x="0" y="0" visible="false" showDataTips="true" width="100%" height="100%" filters="[_LineChartInterfaceNode_DropShadowFilter1_c()]" backgroundElements="[_LineChartInterfaceNode_GridLines1_c()]" verticalAxis="_LineChartInterfaceNode_LinearAxis1_i()" series="[_LineChartInterfaceNode_LineSeries1_i()]"/>
+			</mx:Canvas>
+			<mx:ControlBar height="60" width="100%" horizontalAlign="center">
+				<mx:Legend id="legend" height="100%" width="90%"/>
+			</mx:ControlBar>
+		</mx:Panel>
+	</mx:HBox>
+	<mx:Panel id="queryTip" width="250" height="50" x="200" y="100" layout="vertical" visible="false" borderStyle="solid" borderColor="5592405" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" cornerRadius="5" borderThickness="1" roundedBottomCorners="true" headerHeight="0" verticalAlign="middle">
+		<mx:HBox height="100%" width="100%" verticalAlign="middle" horizontalGap="2" borderStyle="none" paddingLeft="5">
+			<mx:Image width="32" height="32" source="icons/loading.swf"/>
+			<mx:Label text="正在查询数据，请稍候......" fontSize="14" fontWeight="bold"/>
+		</mx:HBox>
+	</mx:Panel>
+	<mx:SWFLoader includeInLayout="false" visible="false" height="100%" width="100%"/>
+
+	<mx:Style>/* //警告: 在未注册版本中，导出Flex项目时不生成Flex脚本,要生成Flex脚本，请到http://www.shankejingling.com/goumai.html购买完整版。
+ */</mx:Style>
+</mx:Application>

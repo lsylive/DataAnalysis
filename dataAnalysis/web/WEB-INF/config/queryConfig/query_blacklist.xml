@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QUERY>
+<SQLSCRIPT ID="GET_BLACKLIST_DECLARRATION_PAGE">  
+		<QUERY>select t.id as id,t.dec_code as decCode,t.dec_time as decTime,t.start_date as startDate,t.end_date as endDate,t1.user_name as userName,t.remark as remark from t_blacklist_declaration t,t_sys_user_info t1 where t.user_id = t1.id
+		 </QUERY>		 
+	</SQLSCRIPT>
+	
+<SQLSCRIPT ID="GET_BLACKLIST_ALARM_PAGE">  
+		<QUERY>select t1.id as id,t2.dec_code as dec_code,t3.cn_name as table_cn_name, t4.cn_name as ind_cn_name,t1.hit_value as hit_value,t1.hit_time as hit_time from t_blacklist_alarm t1,t_blacklist_declaration t2,t_resource_table t3,t_standard_indicator t4 where t1.dec_id = t2.id and t1.hit_dt_id=t3.id and t1.hit_ind_code = t4.indicator_code ${queryString} 
+		 </QUERY>		 
+	</SQLSCRIPT>	
+	
+</QUERY>

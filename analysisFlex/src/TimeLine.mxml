@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml">
+	<mx:Script><![CDATA[
+        //警告: 在未注册版本中，导出Flex项目时不生成Flex脚本,要生成Flex脚本，请到http://www.shankejingling.com/goumai.html购买完整版。
+
+    ]]></mx:Script>
+
+
+</mx:Canvas>

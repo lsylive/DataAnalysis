@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.query">
+   <class name="QueryColumnCfg" table="T_QUERY_TABLECOLUMN_CFG" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="columnId" column="COLUMN_ID" type="integer" not-null="false" length="22" />
+      <property name="displayWidth" column="DISPLAY_WIDTH" type="integer" not-null="false" length="22" />
+      <property name="isSortable" column="IS_SORTABLE" type="string" not-null="false" length="1" />
+      <property name="isSubject" column="IS_SUBJECT" type="string" not-null="false" length="1" />
+      <property name="isShown" column="IS_SHOWN" type="string" not-null="false" length="1" />
+      <property name="tableId" column="TABLE_ID" type="integer" not-null="false" length="22" />
+      <property name="seqNo" column="SEQ_NO" type="integer" not-null="false" length="22" />
+   </class>	
+</hibernate-mapping>

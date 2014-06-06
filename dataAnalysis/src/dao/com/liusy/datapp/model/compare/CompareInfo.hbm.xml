@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.compare">
+   <class name="CompareInfo" table="T_COMPARE_INFO" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="modifyDate" column="MODIFY_DATE" type="date" not-null="false" length="7" />
+      <property name="endTime" column="END_TIME" type="date" not-null="false" length="7" />
+      <property name="startTime" column="START_TIME" type="date" not-null="false" length="7" />
+      <property name="compareType" column="COMPARE_TYPE" type="string" not-null="false" length="1" />
+      <property name="userId" column="USER_ID" type="integer" not-null="false" length="22" />
+      <property name="comapreStatus" column="COMPARE_STATUS" type="string" not-null="false" length="1" />
+      <property name="createDate" column="CREATE_DATE" type="date" not-null="false" length="7" />
+      <property name="compareName" column="COMPARE_NAME" type="string" not-null="false" length="32" />
+      <property name="runCycle" column="RUN_CYCLE" type="string" not-null="false" length="1" />
+      <property name="remark" column="REMARK" type="string" not-null="false" length="256" />
+      <property name="runStatus" column="RUN_STATUS" type="string" not-null="false" length="1" />
+      <property name="runMinute" column="RUN_MINUTE" type="integer" not-null="false" length="22" />
+       <property name="runDay" column="RUN_DAY" type="integer" not-null="false" length="22" />
+       <property name="runHour" column="RUN_HOUR" type="integer" not-null="false" />
+       <property name="runDate" column="RUN_DATE" type="integer" not-null="false" />
+       <property name="dtId" column="DT_ID" type="integer" not-null="false"  />
+       <property name="colList" column="COL_LIST" type="string" not-null="false" length="1000" />
+   </class>	
+</hibernate-mapping>

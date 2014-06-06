@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>           
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">           
+           
+<beans default-lazy-init="true">           
+<!-- CompareInfoDao bean declare begin -->           
+   <bean id="compareInfoDao" class="com.liusy.datapp.dao.compare.impl.CompareInfoDaoImpl" autowire="byName"/>           
+<!-- CompareInfoDao bean declare end -->           
+<!-- CompareTableRelationDao bean declare begin -->          
+   <bean id="compareTableRelationDao" class="com.liusy.datapp.dao.compare.impl.CompareTableRelationDaoImpl" autowire="byName"/>          
+<!-- CompareTableRelationDao bean declare end -->          
+<!-- CompareIndicatorDao bean declare begin -->         
+   <bean id="compareIndicatorDao" class="com.liusy.datapp.dao.compare.impl.CompareIndicatorDaoImpl" autowire="byName"/>         
+<!-- CompareIndicatorDao bean declare end -->         
+<!-- CompareFilterDao bean declare begin -->        
+   <bean id="compareFilterDao" class="com.liusy.datapp.dao.compare.impl.CompareFilterDaoImpl" autowire="byName"/>        
+<!-- CompareFilterDao bean declare end -->        
+<!-- CompareRunInfoDao bean declare begin -->       
+   <bean id="compareRunInfoDao" class="com.liusy.datapp.dao.compare.impl.CompareRunInfoDaoImpl" autowire="byName"/> 
+<!-- CompareRunInfoDao bean declare end -->       
+<!-- CompareMainResultDao bean declare begin -->      
+   <bean id="compareMainResultDao" class="com.liusy.datapp.dao.compare.impl.CompareMainResultDaoImpl" autowire="byName"/>   
+<!-- CompareMainResultDao bean declare end -->      
+<!-- CompareSlaveResultDao bean declare begin -->    
+   <bean id="compareSlaveResultDao" class="com.liusy.datapp.dao.compare.impl.CompareSlaveResultDaoImpl" autowire="byName"/>  
+<!-- CompareSlaveResultDao bean declare end -->    
+
+	<bean id="compareRunThreadDao" class="com.liusy.datapp.dao.compare.impl.CompareRunThreadDaoImpl" autowire="byName"/>
+</beans>           
+           

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QUERY>
+<SQLSCRIPT ID="GET_COMPAREINFO_PAGE">  
+		<QUERY>select t.id as id,t.compare_name as compareName,t.compare_type as compareType,(case when t.run_cycle=1 then '周'||(case when t.run_day=0 then '日' when t.run_day=1 then '一' when t.run_day=2 then '二' when t.run_day=3 then '三' when t.run_day=4 then '四' when t.run_day=5 then '五' when t.run_day=6 then '六' end)||' '||t.run_hour||'时 '||t.run_minute||'分' when t.run_cycle=0 then t.run_date||'日 '||t.run_hour||'时 '||t.run_minute||'分' when t.run_cycle=2 or t.run_cycle=3 then t.run_hour||'时 '||t.run_minute||'分' end) as runTime,t.run_cycle runCycle,remark as remark,t.create_date as createDate,t.compare_status as status, t.dt_id as dtId from t_compare_info t where 1=1 ${queryString}
+		 </QUERY>
+		 
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_COMPARETABLE_GET">  
+		<QUERY>select t.id as id,t.dt_id as tableId from t_compare_datatable_r t where t.comp_id=${compId}
+		 </QUERY>
+		 
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_COMPAREINDICATOR">  
+		<QUERY>select t.id as id,t.ind_id as indId from t_compare_indicator t where t.comp_id=${compId}
+		 </QUERY>
+		 
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_COMPAREFILTER">  
+		<QUERY>select t.id as id,t.column_id as columnId,t.filter_operator as oper,t.filter_value as filtervalue,i.cn_name as columnName  from t_compare_filter t,t_resource_column i where t.column_id=i.id and t.comp_id=${compId}
+		 </QUERY>	 
+	</SQLSCRIPT>
+		
+	<SQLSCRIPT ID="FIND_DEF_SLAVE_RESULT">  
+		<QUERY>select t.id as id,t.run_id as runId,t.pk_id as pkId,t.slavetable_name as slavetableName,t.slave_pk as slavePk,t.count as count,t.status as status,t.run_time as runTime,t.finish_time as finishTime  from t_compare_slaveresult t where  t.run_id=${runId} and t.pk_id=${pkId} and t.slavetable_name ='${slaveTableName}'
+		 </QUERY>	 
+	</SQLSCRIPT>
+	
+	<SQLSCRIPT ID="GET_COMPARERUNINFO">  
+		<QUERY>select t.id as id,t.comp_id as compId,t.start_time as startTime,t.finish_time as finishTime,t.status as status,t.memo as memo,t.ptable_name as ptable_name,t.pmatch_count as pMatchCount from t_compare_runinfo t where  t.comp_id=${compId}
+		 </QUERY>	 
+	</SQLSCRIPT>
+	
+</QUERY>

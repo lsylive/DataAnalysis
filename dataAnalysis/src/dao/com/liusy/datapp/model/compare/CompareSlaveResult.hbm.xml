@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.compare">
+   <class name="CompareSlaveResult" table="T_COMPARE_SLAVERESULT" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+        <generator class="sequence">
+			<param name="sequence">compare_sequence</param>
+		</generator>
+      </id>
+      <property name="slaveTableName" column="SLAVETABLE_NAME" type="string" not-null="false" length="64" />
+      <property name="pkId" column="PK_ID" type="integer" not-null="false" length="22" />
+      <property name="status" column="STATUS" type="string" not-null="false" length="1" />
+      <property name="runTime" column="RUN_TIME" type="date" not-null="false" length="7" />
+      <property name="runId" column="RUN_ID" type="integer" not-null="false" length="22" />
+      <property name="count" column="COUNT" type="integer" not-null="false" length="22" />
+      <property name="finishTime" column="FINISH_TIME" type="date" not-null="false" length="7" />
+       <!--
+       <property name="slavePk" type="org.springframework.orm.hibernate3.support.ClobStringType" not-null="false" >
+      	<column name="SLAVE_PK" sql-type="clob"></column>
+      </property>
+      -->
+       <property name="slavePk" column="SLAVE_PK" type="string" not-null="false" />
+   </class>	
+</hibernate-mapping>

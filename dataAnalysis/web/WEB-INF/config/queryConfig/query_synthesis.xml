@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QUERY>
+	<SQLSCRIPT ID="GET_SUBJECT_TABLE">
+	<QUERY>select a.dt_id as Id,b.cn_name as name from t_query_subject_datatable_r a,t_resource_table b where a.dt_id=b.id and a.subject_id=${subjectId}</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_COMMSUBJECT_PAGE">
+	<QUERY>select a.id as Id,a.sub_name as subName,a.sub_code as subCode,a.sub_desc as subDesc,a.createdate as createDate from t_query_subject a where a.sub_type='1' ${queryString}</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_CLASSIFYSUBJECT_PAGE">
+	<QUERY>select a.id as Id,a.sub_name as subName,a.sub_code as subCode,a.sub_desc as subDesc,a.createdate as createDate,b.parent_id as parentid from t_query_subject a,T_STANDARD_CATEGORY b  where a.sc_id=b.id and a.sub_type='2' ${queryString}</QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_AVAILABLE_TABLE">
+	<QUERY>select a.id as Id,a.cn_name as cnName from t_resource_table a where a.category_id=${cataId} and a.id not in (select DT_ID from t_query_subject_datatable_r where subject_id=${subjectId})</QUERY>
+	</SQLSCRIPT>
+
+	<SQLSCRIPT ID="GET_CATAGORY_ORDER">
+	<QUERY>select a.id as id,a.name as name,a.code as code,a.parent_id as parentId from t_standard_category a order by a.parent_id desc,a.squence_no </QUERY>
+	</SQLSCRIPT>
+	<SQLSCRIPT ID="GET_SUBJECT_INDICATOR">
+	<QUERY>select b.id as id,b.name as name,b.cn_name as cnname,a.cn_name as indname,(case when b.is_filter=1 then  '是' else '否' end) as isfilter,b.filter_operator as oper from t_standard_indicator a,t_query_subject_column_cfg b where a.id=b.ind_id and b.subject_id=${subjectId} </QUERY>
+	</SQLSCRIPT>
+	
+	<SQLSCRIPT ID="GET_ALL_INDICATOR">
+	<QUERY>select a.id as id,a.cn_name as name from t_standard_indicator a</QUERY>
+	</SQLSCRIPT>
+		
+	<SQLSCRIPT ID="GET_RESOURCETABLE_FOR_ADVANCEDQUERY">
+	<QUERY>select r.ID,r.CN_NAME,r.REMARK,(case when r.TYPE=1 then  '表' when r.TYPE=2 then '接口'  end)as type,ci.NAME as cityname,ca.parent_id as parentId,ca.NAME as categoryname FROM T_RESOURCE_TABLE r LEFT JOIN T_SYS_CITY ci ON r.CITY_CODE=ci.code LEFT JOIN T_STANDARD_CATEGORY ca on r.category_id=ca.id where 1=1 ${queryString} </QUERY>
+	</SQLSCRIPT>
+	
+	<SQLSCRIPT ID="GET_FORMPARAM_FOR_ADVANCEDQUERY">
+	<QUERY>select c.name as enname,c.cn_name as cnname,c.indicator_id as indicatorid,c.data_type as datatype,c.codeset_id as codesetid,t.column_id as columnid,t.filter_operator as filteroperator,t.st_query as stquery,t.homonym_query as homonymquery,t.fuzzy_query as fuzzyquery from t_query_tableparam_cfg t left join t_resource_column c on t.column_id=c.id where t.is_filter='1' ${queryString}</QUERY>
+	</SQLSCRIPT>
+
+</QUERY>

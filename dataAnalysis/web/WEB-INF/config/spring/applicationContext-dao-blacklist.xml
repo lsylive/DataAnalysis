@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="GB2312"?>           
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">           
+           
+<beans>           
+<!-- BlacklistDeclarationDao bean declare begin -->           
+   <bean id="blacklistDeclarationDao" class="com.liusy.datapp.dao.blacklist.impl.BlacklistDeclarationDaoImpl" autowire="byName"/>          
+<!-- BlacklistDeclarationDao bean declare end -->           
+<!-- BlacklistAlarmDao bean declare begin -->         
+   <bean id="blacklistAlarmDao" class="com.liusy.datapp.dao.blacklist.impl.BlacklistAlarmDaoImpl" autowire="byName"/> 
+<!-- BlacklistAlarmDao bean declare end -->         
+</beans>           
+           

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>
+
+    <form-bean name="loginForm" type="com.liusy.datapp.web.system.org.form.LoginForm" />
+    
+    <form-bean name="sysUserForm" type="com.liusy.datapp.web.system.org.form.SysUserForm" />
+	 <form-bean name="sysRoleForm" type="com.liusy.datapp.web.system.org.form.SysRoleForm" />
+	 <form-bean name="sysOrgForm" type="com.liusy.datapp.web.system.org.form.SysOrgForm" />
+	 <form-bean name="sysDeptForm" type="com.liusy.datapp.web.system.org.form.SysDeptForm" />
+	
+	<form-bean name="resourceTableForm" type="com.liusy.datapp.web.system.resource.form.ResourceTableForm" />
+	<form-bean name="resourceColumnForm" type="com.liusy.datapp.web.system.resource.form.SysResourceColumnForm" />
+	
+	<form-bean name="sysCityForm" type="com.liusy.datapp.web.system.config.form.SysCityForm" />
+	<form-bean name="standardCategoryForm" type="com.liusy.datapp.web.datastandard.form.StandardCategoryForm" />
+	<form-bean name="standardCodesetForm" type="com.liusy.datapp.web.datastandard.form.StandardCodesetForm" />
+	<form-bean name="standardCodeForm" type="com.liusy.datapp.web.datastandard.form.StandardCodeForm" />
+	<form-bean name="standardDataMetaForm" type="com.liusy.datapp.web.datastandard.form.StandardDataMetaForm" />
+	<form-bean name="standardIndicatorForm" type="com.liusy.datapp.web.datastandard.form.StandardIndicatorForm" />
+	<form-bean name="searchAuditForm" type="com.liusy.datapp.web.system.log.form.SearchAuditForm" />
+	<!-- PersonalInfoForm declare begin -->       
+    <form-bean name="personalInfoForm" type="com.liusy.datapp.web.system.personal.form.PersonalInfoForm" />      
+		<!-- PersonalInfoForm declare end -->     
+
+  <form-bean name="sysCodeForm" type="com.liusy.datapp.web.system.config.form.SysCodeForm" />
+  <!-- ========== Action Mapping Definitions =================================== -->
+    </form-beans>
+   <action-mappings>
+
+    <action path="/user/login" name="loginForm" scope="request" validate="true"
+            type="com.liusy.datapp.web.login.LoginAction" unknown="false" >
+      <forward name="LIST" path="/login.jsp" redirect="false" />
+      <forward name="INDEX" path="/main_new.jsp" redirect="false" />
+    </action>
+     <action path="/user/logout" name="loginForm" scope="request" validate="true"
+            type="com.liusy.datapp.web.login.LogOutAction" unknown="false" >
+      <forward name="logout" path="/login.jsp" redirect="true" />
+    </action>
+   
+    <action path="/system/sysUser" name="sysUserForm" scope="request" validate="true"
+            type="com.liusy.datapp.web.system.org.action.SysUserAction" unknown="false" >
+      <forward name="LIST" path="/pages/system/org/sysUser_list1.jsp" redirect="false" />
+      <forward name="ADD" path="/pages/system/org/sysUser_add.jsp" redirect="false" />
+      <forward name="EDIT" path="/pages/system/org/sysUser_edit.jsp" redirect="false" />
+      <forward name="VIEW" path="/pages/system/org/sysUser_view.jsp" redirect="false" />
+      <forward name="PWD" path="/pages/system/org/sysUser_pwd.jsp" redirect="false" />
+      <forward name="RIGHTS" path="/pages/system/org/sysUser_rights.jsp" redirect="false" />
+      <forward name="VERIFY" path="/pages/system/org/sysUser_verify.jsp" redirect="false" />
+      <forward name="GETROLES" path="/pages/system/org/sysUser_roles.jsp" redirect="false" />
+      <forward name="RESOURCE" path="/pages/system/org/sysUser_resource.jsp" redirect="false" />
+       <forward name="GETRESOURCEFORM" path="/pages/system/org/sysUser_resource_form.jsp" redirect="false" />
+    </action>
+    
+    <action path="/resource/menu" name="sysUserForm" scope="request" validate="true"
+            type="com.liusy.datapp.web.resource.action.SystemMenuAction" unknown="false" />
+     
+	<action path="/system/sysRole" name="sysRoleForm" scope="request" validate="true"
+			type="com.liusy.datapp.web.system.org.action.SysRoleAction" unknown="false" >
+		<forward name="LIST" path="/pages/system/org/sysRole_list.jsp" redirect="false" />
+		<forward name="ADD" path="/pages/system/org/sysRole_add.jsp" redirect="false" />
+		<forward name="EDIT" path="/pages/system/org/sysRole_edit.jsp" redirect="false" />
+      <forward name="RIGHTS" path="/pages/system/org/sysRole_rights.jsp" redirect="false" />
+      <forward name="VERIFY" path="/pages/system/org/sysRole_verify.jsp" redirect="false" />
+      <forward name="VIEW" path="/pages/system/org/sysRole_view.jsp" redirect="false" />
+	 </action>
+	<action path="/system/sysOrg" name="sysOrgForm" scope="request" validate="true"
+			type="com.liusy.datapp.web.system.org.action.SysOrgAction" unknown="false" >
+		<forward name="LIST" path="/pages/system/org/sysOrg.jsp" redirect="false" />
+		<forward name="ADD" path="/pages/system/org/sysOrg_add.jsp" redirect="false" />
+		<forward name="EDIT" path="/pages/system/org/sysOrg_edit.jsp" redirect="false" />
+		<forward name="VIEW" path="/pages/system/org/sysOrg_view.jsp" redirect="false" />
+	</action>
+	<action path="/system/sysDept" name="sysDeptForm" scope="request" validate="true"
+			type="com.liusy.datapp.web.system.org.action.SysDeptAction" unknown="false" >
+		<forward name="LIST" path="/pages/system/org/sysDept.jsp" redirect="false" />
+		<forward name="ADD" path="/pages/system/org/sysDept_add.jsp" redirect="false" />
+		<forward name="EDIT" path="/pages/system/org/sysDept_edit.jsp" redirect="false" />
+		<forward name="VIEW" path="/pages/system/org/sysDept_view.jsp" redirect="false" />
+	</action>
+
+<!-- 元数据管理模块 开始-->
+	<action path="/system/sysCity" name="sysCityForm" scope="request" validate="true"
+			type="com.liusy.datapp.web.system.config.action.SysCityAction" unknown="false">
+		<forward name="LIST" path="/pages/system/config/sysCity_list.jsp" redirect="false" />
+		<forward name="ADD" path="/pages/system/config/sysCity_add.jsp" redirect="false" />
+		<forward name="EDIT" path="/pages/system/config/sysCity_edit.jsp" redirect="false" />
+	</action>
+	<action path="/datastandard/standardCategory" name="standardCategoryForm" scope="request" validate="true"
+			type="com.liusy.datapp.web.datastandard.action.StandardCategoryAction" unknown="false">
+		<forward name="LIST" path="/pages/datastandard/standardCategory_list.jsp" redirect="false" />
+		<forward name="ADD" path="/pages/datastandard/standardCategory_add.jsp" redirect="false" />
+		<forward name="EDIT" path="/pages/datastandard/standardCategory_edit.jsp" redirect="false" />
+	</action>
+	<action path="/datastandard/standardCodeset" name="standardCodesetForm" scope="request" validate="true"
+			type="com.liusy.datapp.web.datastandard.action.StandardCodesetAction" unknown="false">
+		<forward name="ADD" path="/pages/datastandard/standardCodeset_add.jsp" redirect="false" />
+		<forward name="EDIT" path="/pages/datastandard/standardCodeset_edit.jsp" redirect="false" />
+		<forward name="LIST" path="/pages/datastandard/standardCodeset_grid.jsp" redirect="false" />
+		<forward name="UPDATE" path="/datastandard/standardCodeset.do?action=EDIT" redirect="false" />
+	</action>
+	<action path="/datastandard/standardCode" name="standardCodeForm" scope="request" validate="true"
+			type="com.liusy.datapp.web.datastandard.action.StandardCodeAction" unknown="false">
+		<forward name="LIST" path="/pages/datastandard/standardCode_list.jsp" redirect="false" />
+		<forward name="ADD" path="/pages/datastandard/standardCode_add.jsp" redirect="false" />
+		<forward name="EDIT" path="/pages/datastandard/standardCode_edit.jsp" redirect="false" />
+		<forward name="UPDATE" path="/datastandard/standardCode.do?action=EDIT" redirect="false" />
+	</action>
+	<action path="/datastandard/dataMeta" name="standardDataMetaForm" scope="request" validate="true"
+			type="com.liusy.datapp.web.datastandard.action.StandardDataMetaAction" unknown="false">
+		<forward name="ADD" path="/pages/datastandard/dataMeta_add.jsp" redirect="false" />
+		<forward name="EDIT" path="/pages/datastandard/dataMeta_edit.jsp" redirect="false" />
+		<forward name="LIST" path="/pages/datastandard/dataMeta_list.jsp" redirect="false" />
+		<forward name="VIEW" path="/pages/datastandard/dataMeta_view.jsp" redirect="false" />
+	</action>
+	<action path="/datastandard/indicator" name="standardIndicatorForm" scope="request" validate="true"
+			type="com.liusy.datapp.web.datastandard.action.StandardIndicatorAction" unknown="false">
+		<forward name="LIST" path="/pages/datastandard/indicator_list.jsp" redirect="false" />
+		<forward name="ADD" path="/pages/datastandard/indicator_add.jsp" redirect="false" />
+		<forward name="EDIT" path="/pages/datastandard/indicator_edit.jsp" redirect="false" />
+	</action>
+<!-- 元数据管理模块 结束 -->
+<!-- 资源目录管理 开始 -->	
+	<action path="/system/ResourceTable" name="resourceTableForm" scope="request" validate="true"
+			type="com.liusy.datapp.web.system.resource.action.SysResourceTableAction" unknown="false">
+		<forward name="LIST" path="/pages/system/resource/sysResourceTable_list.jsp" redirect="false" />
+		<forward name="ADD" path="/pages/system/resource/sysResourceTable_add.jsp" redirect="false" />
+		<forward name="EDIT" path="/pages/system/resource/sysResourceTable_edit.jsp" redirect="false" />
+		<forward name="EDITWINDOW" path="/pages/system/resource/sysResourceEdit.jsp" redirect="false" />
+		<forward name="MAIN" path="/pages/system/resource/sysResourceMain.jsp" redirect="false" /> 
+<!--		<forward name="MAIN" path="/pages/system/resource/sysResourceMain_grid.jsp" redirect="false" /> -->
+		<forward name="UPDATE" path="/system/ResourceTable.do?action=EDIT" redirect="false" />
+	</action>
+	<action path="/system/ResourceColumn" name="resourceColumnForm" scope="request" validate="true"
+			type="com.liusy.datapp.web.system.resource.action.SysResourceColumnAction" unknown="false">
+		<forward name="LIST" path="/pages/system/resource/sysResourceColumn_list.jsp" redirect="false" />
+		<forward name="ADD" path="/pages/system/resource/sysResourceColumn_add.jsp" redirect="false" />
+		<forward name="EDIT" path="/pages/system/resource/sysResourceColumn_edit.jsp" redirect="false" />
+		<forward name="EDITWINDOW" path="/pages/system/resource/sysResourceColumn_edit_queryCfg.jsp" redirect="false" />
+		<forward name="SELECTDATAMETA" path="/pages/system/resource/selectDataMate.jsp" redirect="false" />
+	</action>
+	<action path="/system/ResourceTableView" name="resourceTableForm" scope="request" validate="true"
+			type="com.liusy.datapp.web.system.resource.action.SysResourceViewAction" unknown="false">
+		<forward name="VIEW" path="/pages/system/resource/sysResourceViewTableProp.jsp" redirect="false" />
+		<forward name="LIST" path="/pages/system/resource/sysResourceViewTable_list.jsp" redirect="false" />
+		<forward name="MAIN" path="/pages/system/resource/sysResourceViewMain.jsp" redirect="false" /> 
+	</action>
+	<action path="/system/ResourceColumnView" name="resourceColumnForm" scope="request" validate="true"
+			type="com.liusy.datapp.web.system.resource.action.SysResourceViewColAaction" unknown="false">
+		<forward name="LIST" path="/pages/system/resource/sysResourceViewColumn_list.jsp" redirect="false" />
+	</action>
+<!-- 资源目录管理结束 -->
+
+<!-- 系统代码管理开始 -->
+<action path="/config/sysCode" name="sysCodeForm" scope="request" validate="true"
+			type="com.liusy.datapp.web.system.config.action.SysCodeAction" unknown="false">
+		<forward name="ADD" path="/pages/system/config/sysCode_add.jsp" redirect="false" />
+		<forward name="EDIT" path="/pages/system/config/sysCode_edit.jsp" redirect="false" />
+		<forward name="CODELIST" path="/pages/system/config/SysCode_grid.jsp" redirect="false" />
+		<forward name="LIST" path="/pages/system/config/SysCodeSet_list.jsp" redirect="false" />
+		<forward name="UPDATE" path="/config/sysCode.do?action=EDIT" redirect="false" />
+</action>
+	
+<!-- 系统代码管理结束 -->
+
+<!-- 系统代码管理开始 -->
+<action path="/query/searchAudit" name="searchAuditForm" scope="request" validate="true"
+			type="com.liusy.datapp.web.system.log.action.SearchAuditAction" unknown="false">
+		<forward name="LIST" path="/pages/system/log/search_audit_list.jsp" redirect="false" />
+</action>
+	
+<!-- 系统代码管理结束 -->
+  </action-mappings>
+</struts-config>

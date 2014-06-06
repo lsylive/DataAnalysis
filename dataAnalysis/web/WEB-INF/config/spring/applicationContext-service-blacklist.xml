@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>                        
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">                        
+                        
+<beans default-lazy-init="false">              
+<!-- BlacklistDeclarationService bean declare begin -->           
+   <bean id="blacklistDeclarationService" parent="txProxyTemplate">                
+        <property name="target">                
+            <bean class="com.liusy.datapp.service.blacklist.impl.BlacklistDeclarationServiceImpl" autowire="byName"/>                
+        </property>                
+    </bean>              
+<!-- BlacklistDeclarationService bean declare end -->           
+<!-- BlacklistAlarmService bean declare begin -->          
+   <bean id="blacklistAlarmService" parent="txProxyTemplate">      
+        <property name="target">      
+            <bean class="com.liusy.datapp.service.blacklist.impl.BlacklistAlarmServiceImpl" autowire="byName"/>      
+        </property>      
+    </bean>    
+<!-- BlacklistAlarmService bean declare end -->          
+</beans>             
+                        

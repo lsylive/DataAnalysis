@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.compare">
+   <class name="CompareRunThread" table="T_COMPARE_RUN_THREAD" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="thCode" column="TH_CODE" type="string" not-null="false" length="100" />
+      <property name="finishTime" column="FINISH_TIME" type="timestamp" not-null="false" length="7" />
+      <property name="startTime" column="START_TIME" type="timestamp" not-null="false" length="7" />
+      <property name="runId" column="RUN_ID" type="integer" not-null="false"  />
+ 	  <property name="mtPage" column="MT_PAGE" type="integer" not-null="false" />
+       <property name="mtLine" column="MT_LINE" type="integer" not-null="false" />
+       <property name="stId" column="ST_ID" type="integer" not-null="false" />
+       <property name="stPage" column="ST_PAGE" type="integer" not-null="false"  />
+       <property name="stLine" column="ST_LINE" type="integer" not-null="false"  />
+      <property name="thStatus" column="TH_STATUS" type="string" not-null="false" length="1" />
+   </class>	
+</hibernate-mapping>

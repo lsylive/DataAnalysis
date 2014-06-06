@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.system.org">
+   <class name="SysRole" table="T_SYS_ROLE_INFO" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="roleName" column="ROLE_NAME" type="string" not-null="false" length="32" />
+      <property name="roleType" column="ROLE_TYPE" type="string" not-null="false" length="1" />
+      <property name="roleStatus" column="ROLE_STATUS" type="string" not-null="false" length="1" />
+      <property name="roleCode" column="ROLE_CODE" type="string" not-null="false" length="32" />
+      <property name="appTime" column="APP_TIME" type="date" not-null="false" length="7" />
+      <property name="roleDesc" column="ROLE_DESC" type="string" not-null="false" length="128" />
+      <property name="appNote" column="APP_NOTE" type="string" not-null="false" length="256" />
+      <property name="remark" column="REMARK" type="string" not-null="false" length="256" />
+   </class>	
+</hibernate-mapping>

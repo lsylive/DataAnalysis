@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.analysis">
+    <class name="AnalysisDiagram" table="T_ANALYSIS_DIAGRAM">
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+        <property name="name" type="string" column="NAME" length="64" />
+        <property name="type" type="string" column="TYPE" length="1" />
+        <property name="createBy" type="string" column="CREATE_BY" length="30" />
+        <property name="createDate" type="date" column="CREATE_DATE" length="7" />
+        <property name="description" type="string" column="DESCRIPTION" length="1000" />
+        <property name="visiable" type="string" column="VISIABLE" length="1" />
+        <property name="body" type="java.sql.Blob" column="BODY" />
+    </class>
+</hibernate-mapping>

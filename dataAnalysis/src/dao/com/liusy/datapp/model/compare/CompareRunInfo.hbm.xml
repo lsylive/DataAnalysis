@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.compare">
+   <class name="CompareRunInfo" table="T_COMPARE_RUNINFO" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="compId" column="COMP_ID" type="integer" not-null="false" length="22" />
+      <property name="memo" column="MEMO" type="string" not-null="false" length="256" />
+      <property name="status" column="STATUS" type="string" not-null="false" length="1" />
+      <property name="startTime" column="START_TIME" type="timestamp" not-null="false" length="7" />
+      <property name="finishTime" column="FINISH_TIME" type="timestamp"  not-null="false" length="7" />
+      <property name="ptableName" column="PTABLE_NAME" type="string" not-null="false" length="64" />
+      <property name="pmatchCount" column="PMATCH_COUNT" type="integer" not-null="false" length="64" />
+   </class>	
+</hibernate-mapping>

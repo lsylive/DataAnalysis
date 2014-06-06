@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" backgroundColor="#00dce9ef" layout="absolute" applicationComplete="{initWindow();}">
+	<mx:Script><![CDATA[
+        //警告: 在未注册版本中，导出Flex项目时不生成Flex脚本,要生成Flex脚本，请到http://www.shankejingling.com/goumai.html购买完整版。
+
+    ]]></mx:Script>
+
+	<mx:DateValidator id="_StarChartInterfaceNode_DateValidator1" property="text" required="false" inputFormat="YYYY-MM-DD"/>
+	<mx:DetailWindow id="detailBox" visible="false" width="70%" height="70%" goClose="{detailBox.visible = false;}" hideEffect="zoomCloseDetail"/>
+	<mx:Canvas id="container" width="100%" height="100%" backgroundColor="#00f9f9f9">
+		<mx:Visualizer id="myVisualizer" width="100%" height="100%" defaultNodeWidth="64" defaultNodeHeight="64" layout="{LayoutConstants.BALLOON_LAYOUT}" linkStyle="linkStyle" highlightLinkStyle="highlightLinkStyle" colorFields="[15400602, 16383719]"/>
+		<mx:Panel id="queryTip" width="250" height="50" x="200" y="100" layout="vertical" visible="false" borderStyle="solid" borderColor="5592405" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" cornerRadius="5" borderThickness="1" roundedBottomCorners="true" headerHeight="0" verticalAlign="middle">
+			<mx:HBox height="100%" width="100%" verticalAlign="middle" horizontalGap="2" borderStyle="none" paddingLeft="5">
+				<mx:Image width="32" height="32" source="icons/loading.swf"/>
+				<mx:Label text="正在查询数据，请稍候......" fontSize="14" fontWeight="bold"/>
+			</mx:HBox>
+		</mx:Panel>
+		<mx:TitleWindow id="controlWin" styleName="controlPanel" width="204" height="99%" x="1" y="1" layout="vertical" title="控制台" verticalGap="0" paddingLeft="0" paddingRight="0" paddingTop="0">
+			<mx:HBox width="100%" borderStyle="none" paddingRight="5" horizontalGap="0">
+				<mx:Label text="提示：按图标打开查询窗口" color="#00ff0101"/>
+			</mx:HBox>
+			<mx:HBox width="100%" height="36" verticalAlign="middle" horizontalGap="2" borderStyle="none" paddingLeft="5">
+				<mx:Image id="btnData" width="24" height="24" source="icons/table.png" alpha="0.6" toolTip=" 打开查询条件窗口 " ="{out(event);}" ="" click="{searchSelect();}"/>
+				<mx:Image id="btnZoomin" width="24" height="24" source="icons/zoomin.png" alpha="0.6" toolTip=" 图形放大 " ="{out(event);}" ="" click="{zoomIn();}"/>
+				<mx:Image id="btnZoomout" width="24" height="24" source="icons/zoomout.png" alpha="0.6" toolTip=" 图形缩小 " ="{out(event);}" ="" click="{zoomOut();}"/>
+				<mx:Image id="btnZoomfit" width="24" height="24" source="icons/zoomfit.png" alpha="0.6" toolTip=" 回到原图 " ="{out(event);}" ="" click="{zoomFit();}"/>
+			</mx:HBox>
+			<mx:HRule height="10" width="100%"/>
+			<mx:HBox width="100%" horizontalGap="0" borderStyle="none" paddingLeft="5" paddingRight="5">
+				<mx:Label width="70" text="布局方式：" fontSize="12"/>
+				<mx:ComboBox id="LayoutType" width="120" rowCount="10" fontSize="12" change="{onLayoutTypeChanged(event);}" dataProvider='{["星形图", "环状图", "放射状图", "层次树图", "等级图", "层次环状图"]}'/>
+			</mx:HBox>
+			<mx:HRule height="10" width="100%"/>
+			<mx:HBox width="100%" horizontalGap="0" borderStyle="none" paddingLeft="5" paddingRight="5">
+				<mx:Label width="70" text="连线方式：" fontSize="12"/>
+				<mx:ComboBox id="analysisPath" width="120" fontSize="12" change="{onAnalysisPathChanged(event);}" dataProvider='{["直线", "折线", "正交折线", "曲线", "正交曲线"]}'/>
+			</mx:HBox>
+			<mx:HRule height="10" width="100%"/>
+			<mx:HBox width="100%" horizontalGap="0" borderStyle="none" paddingLeft="5" paddingRight="5">
+				<mx:Label width="70" text="布局方向：" fontSize="12"/>
+				<mx:ComboBox id="layoutDirect" width="120" fontSize="12" change="{onLayoutDirectChanged(event);}" dataProvider='{["自上而下", "自下而上", "自左至右", "自右至左"]}'/>
+			</mx:HBox>
+			<mx:HRule height="10" width="100%"/>
+			<mx:HBox width="100%" horizontalGap="0" borderStyle="none" paddingLeft="5" paddingRight="5">
+				<mx:Label width="70" text="节点距离：" fontSize="12"/>
+				<mx:HSlider id="nodespacing" minimum="0" maximum="100" width="120" showDataTip="true" value="10" snapInterval="1" tickInterval="10" change="{nodeSpacingChange(event);}"/>
+			</mx:HBox>
+			<mx:HRule height="10" width="100%"/>
+			<mx:Text id="description" width="100%" textAlign="left" fontSize="12" paddingLeft="0" textIndent="0"/>
+		</mx:TitleWindow>
+	</mx:Canvas>
+	<mx:TitleWindow id="searchWin" styleName="controlPanel" visible="false" x="1" layout="vertical" y="1" width="90%" height="90%" title="分析" verticalScrollPolicy="auto" horizontalScrollPolicy="off" alpha="1" showCloseButton="true" backgroundAlpha="1" borderAlpha="1" textAlign="left" fontSize="12" horizontalAlign="center" borderThicknessBottom="1" borderThicknessLeft="1" paddingTop="2" borderThicknessTop="1" borderThicknessRight="1" borderColor="131586" backgroundColor="#00fbfdfc" roundedBottomCorners="true" cornerRadius="6" close="{searchWin.visible = false;}" showEffect="zoomOpen" hideEffect="zoomClose">
+		<mx:VBox width="100%" height="100%" horizontalAlign="center" verticalGap="3">
+			<mx:QueryWindow id="queryBox" width="100%" styleName="queryPanel" titleIcon="{StarChartInterfaceNode__embed_mxml_application_png_128945640}" horizontalAlign="center" borderColor="65793" borderStyle="solid" cornerRadius="3" ="{goQuery(event);}" goClose="{searchWin.visible = false;}"/>
+			<mx:VBox width="100%" height="100%" borderThickness="1" borderStyle="solid" paddingLeft="1" paddingRight="1" paddingTop="1" paddingBottom="1" borderColor="10066329" verticalGap="0">
+				<mx:DataGrid id="tabResult" width="100%" height="100%" columns="{[_StarChartInterfaceNode_DataGridColumn1_c(), _StarChartInterfaceNode_DataGridColumn2_c()]}"/>
+				<mx:HBox id="rowCountBox" width="100%" height="24" paddingLeft="5" paddingRight="5" horizontalAlign="left" verticalAlign="top">
+					<mx:Label id="rowCount" text="" fontSize="12"/>
+				</mx:HBox>
+			</mx:VBox>
+		</mx:VBox>
+	</mx:TitleWindow>
+
+	<mx:Style>/* //警告: 在未注册版本中，导出Flex项目时不生成Flex脚本,要生成Flex脚本，请到http://www.shankejingling.com/goumai.html购买完整版。
+ */</mx:Style>
+</mx:Application>

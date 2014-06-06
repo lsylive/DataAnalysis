@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.resource">
+   <class name="ResourceColumnUserCfg" table="T_RESOURCE_USER_COLUMN_R" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+       <property name="tableId" column="TABLE_ID" type="integer" not-null="false" length="22" />
+      <property name="columnId" column="COLUMN_ID" type="integer" not-null="false" length="22" />
+      <property name="securityLevel" column="SECURITY_LEVEL" type="string" not-null="false" length="1" />
+      <property name="userId" column="USER_ID" type="integer" not-null="false" length="22" />
+   </class>	
+</hibernate-mapping>

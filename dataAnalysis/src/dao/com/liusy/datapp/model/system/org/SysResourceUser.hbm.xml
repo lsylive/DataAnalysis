@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.system.org">
+   <class name="SysResourceUser" table="T_SYS_RESOURCE_USER_R" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="status" column="STATUS" type="string" not-null="false" length="1" />
+      <property name="resId" column="RES_ID" type="integer" not-null="false" length="22" />
+      <property name="userId" column="USER_ID" type="integer" not-null="false" length="22" />
+      <property name="appTime" column="APP_TIME" type="date" not-null="false" length="7" />
+      <property name="appNote" column="APP_NOTE" type="string" not-null="false" length="256" />
+      <property name="oper" column="OPER" type="string" not-null="false" length="1" />
+   </class>	
+</hibernate-mapping>

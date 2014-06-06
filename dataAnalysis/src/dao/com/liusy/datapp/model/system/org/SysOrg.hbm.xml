@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.system.org">
+   <class name="SysOrg" table="T_SYS_ORG_INFO" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="treeLevel" column="TREE_LEVEL" type="integer" not-null="false" length="2" />
+      <property name="orgStatus" column="ORG_STATUS" type="string" not-null="false" length="2" />
+      <property name="upOrgId" column="UP_ORG_ID" type="integer" not-null="false" length="22" />
+      <property name="orgCode" column="ORG_CODE" type="string" not-null="false" length="64" />
+      <property name="name" column="ORG_NAME" type="string" not-null="false" length="128" />
+      <property name="treeCode" column="TREE_CODE" type="string" not-null="false" length="32" />
+      <property name="orgAbbr" column="ORG_ABBR" type="string" not-null="false" length="16" />
+      <property name="remark" column="REMARK" type="string" not-null="false" length="256" />
+      <property name="orderNo" column="ORDER_NO" type="integer" not-null="false" length="8" />
+      <property name="orgType" column="ORG_TYPE" type="string" not-null="false" length="1" />
+   </class>	
+</hibernate-mapping>

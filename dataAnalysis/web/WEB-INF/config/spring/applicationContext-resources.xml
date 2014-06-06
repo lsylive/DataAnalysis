@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-lazy-init="false" >
+      
+    <!-- JDBC DataSource -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+ 	  	<!--<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl"/>--> 
+   		   <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+        <property name="username" value="dataana"/>
+        <property name="password" value="dataana"/>
+        <property name="maxActive" value="20"/>
+        <property name="maxIdle" value="5"/>
+        <property name="maxWait" value="1000"/>
+        <property name="defaultAutoCommit" value="true"/>
+        <property name="removeAbandoned" value="true"/>
+        <property name="removeAbandonedTimeout" value="60"/>
+        <property name="logAbandoned" value="true"/>
+    </bean>
+    <bean id="dataSourcetmp" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+      <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+   	<!--	  <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl"/>--> 
+        <property name="username" value="dataana"/>
+        <property name="password" value="dataana"/>
+        <property name="maxActive" value="20"/>
+        <property name="maxIdle" value="5"/>
+        <property name="maxWait" value="1000"/>
+        <property name="defaultAutoCommit" value="true"/>
+        <property name="removeAbandoned" value="true"/>
+        <property name="removeAbandonedTimeout" value="60"/>
+        <property name="logAbandoned" value="true"/>
+    </bean>
+    
+    
+    <bean id="sqlGen" class="com.liusy.dataapplatform.base.util.OracleSqlGen" autowire="byName"></bean>
+    
+    <bean id="queryFactory" class="com.liusy.dataapplatform.base.util.QueryFactory" autowire="byName"></bean>
+	<bean id="oracleScriptGen" class="com.liusy.datapp.util.meta.OracleScriptGenerator" autowire="byName" />
+   <!--   <bean id="sysResourcePool" class="com.liusy.datapp.util.pool.SysResourcePool" autowire="byName" lazy-init="false"></bean>-->
+
+
+    <bean id="dataSourceIq" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+ 	  	<!--<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl"/>--> 
+   		   <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+        <property name="username" value="dataapp"/>
+        <property name="password" value="dataapp"/>
+        <property name="maxActive" value="20"/>
+        <property name="maxIdle" value="5"/>
+        <property name="maxWait" value="1000"/>
+        <property name="defaultAutoCommit" value="true"/>
+        <property name="removeAbandoned" value="true"/>
+        <property name="removeAbandonedTimeout" value="60"/>
+        <property name="logAbandoned" value="true"/>
+    </bean>
+    <!--<bean id="sybaseSqlGen" class="com.liusy.dataapplatform.base.util.SybaseSqlGen" autowire="byName"></bean>-->
+    <bean id="sybaseSqlGen" class="com.liusy.dataapplatform.base.util.OracleSqlGen" autowire="byName"></bean>
+    <bean id="analysisConnectionService" class="com.liusy.datapp.service.analysis.impl.AnalysisConnectionServiceImpl" autowire="byName"></bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">                                         
+	    <property name="dataSource" ref="dataSource" />                                             
+	</bean>                                        
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" lazy-init="true" />                                        
+	                                        
+    <!-- Hibernate SessionFactory -->                                        
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">                                        
+        <property name="dataSource" ref="dataSource"/>                                        
+        <property name="lobHandler" ref="lobHandler" />                                        
+       	<property name="mappingLocations">                                        
+			<list>                                         
+				<value>classpath:/com/liusy/datapp/model/**/*.hbm.xml</value> 
+			</list>                                        
+		</property>                                        
+        <property name="hibernateProperties">                                        
+            <props>                                        
+                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle9iDialect</prop>                                        
+				<prop key="show_sql">true</prop>                                        
+				<prop key="hibernate.order_updates">true</prop>                                         
+				<prop key="hibernate.generate_statistics">true</prop>                                         
+				<prop key="hibernate.bytecode.use_reflection_optimizer">true</prop> 	                                        
+				<!-- org.hibernate.hql.classic.ClassicQueryTranslatorFactory -->
+				<!-- org.hibernate.hql.ast.ASTQueryTranslatorFactory -->			                                        
+				<prop key="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</prop>                                         
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</prop>                                             
+				<!--                                        
+				<prop key="hibernate.query.substitutions">true 'Y', false 'N'</prop>								                                        
+                 Create/update the database tables automatically when the JVM starts up                	    	                                        
+                <prop key="hibernate.hbm2ddl.auto">update</prop> -->                                        
+            </props>                                        
+        </property>                                        
+    </bean>              
+                              
+    <!-- Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->                                        
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">                                        
+        <property name="sessionFactory" ref="sessionFactory"/>                                        
+    </bean>  
+    
+    <!--  缓存的共享池  -->
+
+    <bean id="tableConfigPool" class="com.liusy.datapp.service.pool.TableConfigPool" autowire="byName"></bean>
+	<bean id="subjectConfigPool" class="com.liusy.datapp.service.pool.SubjectConfigPool" autowire="byName"></bean>
+	<bean id="queryMetaIndPool" class="com.liusy.datapp.service.pool.QueryMetaIndPool" autowire="byName"></bean>
+	<bean id="bussCodeSetPool" class="com.liusy.datapp.service.pool.BussCodeSetPool" autowire="byName"></bean>
+	<bean id="catagoryPool" class="com.liusy.datapp.service.pool.CatagoryPool" autowire="byName"></bean>
+
+    <!--  事务处理 AOP  -->
+    
+    <bean id="txProxyTemplate" abstract="true"                                  
+        class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">                                  
+        <property name="transactionManager" ref="transactionManager"/>                                  
+        <property name="transactionAttributes">                                  
+            <props>                                  
+                <!--    ISOLATION_DEFAULT                                  
+						ISOLATION_READ_UNCOMMITTED                                  
+						ISOLATION_READ_COMMITTED                                  
+						ISOLATION_REPEATABLE_READ                                  
+						ISOLATION_SERIALIZABLE                                  
+						PROPAGATION_REQUIRED                                  
+						PROPAGATION_SUPPORTS                                  
+						PROPAGATION_REQUIRES_NEW                                  
+						PROPAGATION_NOT_SUPPORTED                                  
+						PROPAGATION_NEVER                                  
+						PROPAGATION_NESTED
+				-->                                  
+                <prop key="query*">PROPAGATION_SUPPORTS,readOnly</prop>                                  
+                <prop key="find*">PROPAGATION_SUPPORTS,readOnly</prop>                                  
+                <prop key="*">PROPAGATION_REQUIRED</prop>                                  
+            </props>                                  
+        </property>                                  
+    </bean>
+         
+</beans>

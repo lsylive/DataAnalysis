@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.system.log">
+   <class name="SysLogOperate" table="T_SYS_LOG_OPERATE" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="deptName" column="DEPT_NAME" type="string" not-null="false" length="64" />
+      <property name="ipAddress" column="IP_ADDRESS" type="string" not-null="false" length="32" />
+      <property name="queryCondition" column="QUERY_CONDITION" type="string" not-null="false" length="4000" />
+      <property name="deptId" column="DEPT_ID" type="integer" not-null="false" length="22" />
+      <property name="resId" column="RES_ID" type="integer" not-null="false" length="22" />
+      <property name="optType" column="OPT_TYPE" type="string" not-null="false" length="32" />
+      <property name="orgName" column="ORG_NAME" type="string" not-null="false" length="128" />
+      <property name="orgId" column="ORG_ID" type="integer" not-null="false" length="22" />
+      <property name="userAccount" column="USER_ACCOUNT" type="string" not-null="false" length="64" />
+      <property name="userName" column="USER_NAME" type="string" not-null="false" length="16" />
+      <property name="optTime" column="OPT_TIME" type="date" not-null="false" length="7" />
+   </class>	
+</hibernate-mapping>

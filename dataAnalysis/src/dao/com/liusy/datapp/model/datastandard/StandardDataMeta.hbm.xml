@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.datastandard">
+   <class name="StandardDataMeta" table="T_STANDARD_DATAMETA" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="modifyDate" column="MODIFY_DATE" type="date" not-null="false" length="7" />
+      <property name="categoryId" column="CATEGORY_ID" type="integer" not-null="false" length="22" />
+      <property name="expression" column="EXPRESSION" type="string" not-null="false" length="32" />
+      <property name="abbreviations" column="ABBREVIATIONS" type="string" not-null="false" length="16" />
+      <property name="createBy" column="CREATE_BY" type="string" not-null="false" length="32" />
+      <property name="dataType" column="DATA_TYPE" type="string" not-null="false" length="32" />
+      <property name="dataRange" column="DATA_RANGE" type="string" not-null="false" length="128" />
+      <property name="modifyBy" column="MODIFY_BY" type="string" not-null="false" length="32" />
+      <property name="createDate" column="CREATE_DATE" type="date" not-null="false" length="7" />
+      <property name="cnName" column="CN_NAME" type="string" not-null="false" length="32" />
+      <property name="measurementUnit" column="MEASUREMENT_UNIT" type="string" not-null="false" length="16" />
+      <property name="indicatorId" column="INDICATOR_ID" type="integer" not-null="false" length="22" />
+      <property name="dataFormat" column="DATA_FORMAT" type="string" not-null="false" length="128" />
+      <property name="code" column="CODE" type="string" not-null="false" length="32" />
+      <property name="codesetNo" column="CODESET_NO" type="string" not-null="false" length="64" />
+      <property name="name" column="NAME" type="string" not-null="false" length="32" />
+      <property name="synonyms" column="SYNONYMS" type="string" not-null="false" length="128" />
+      <property name="remark" column="REMARK" type="string" not-null="false" length="256" />
+   </class>	
+</hibernate-mapping>

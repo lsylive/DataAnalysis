@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.compare">
+   <class name="CompareTableRelation" table="T_COMPARE_DATATABLE_R" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="colList" column="COL_LIST" type="string" not-null="false" length="1000" />
+      <property name="dtId" column="DT_ID" type="integer" not-null="false" length="22" />
+      <property name="compId" column="COMP_ID" type="integer" not-null="false" length="22" />
+   </class>	
+</hibernate-mapping>

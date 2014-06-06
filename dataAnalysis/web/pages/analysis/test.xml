@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<item id="1" name="测试我们的数据模版分析" image="SKW.png"/>
+	<item id="2" name="测试我们的数据模版分析测试我们的数据模版" image="DBJ.png"/>
+	<item id="3" name="My Friedns" image="DPL.png"/>
+	<item id="4" name="Photos" image="GETPOP.png"/>
+	<item id="5" name="PHP" image="FRC.png"/>
+	<item id="6" name="Mac.jpg" image="FLT.png"/>
+	<item id="7" name="My working place.jpg" image="FTP.png"/>
+	<item id="8" name="Price List 1.xls" image="GRP.png"/>
+	<item id="9" name="Letter to dad.doc" image="DLU.png"/>
+	<item id="10" name="tdisk.ddk" image="SFP.png"/>
+	<item id="11" name="SkyForce.sis" image="SMG.png"/>
+	<item id="12" name="TimeTrack.sis" image="WTL.png"/>
+	<item id="13" name="LJHDS.dll" image="ZIP.png"/>
+	<item id="14" name="EULA 2.txt" image="SQL.png"/>
+</data>

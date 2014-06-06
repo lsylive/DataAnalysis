@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>广东省信息所（数据应用系统）</title>
+<meta http-equiv="Cache-Control" content="max-age=7200" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body, div, ul, li, h1, h2, h3, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+	margin:0;
+	padding:0;
+	font-size:14px;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset, img {
+	border:0;
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+	font-style:normal;
+	font-weight:normal;
+}
+h1 {
+	font-size:22px;
+	color:#000;
+}
+/* ---------------------------------UP Reset------------------------------------------- */
+body {
+	font:100% Arial, sans-serif;
+	text-align:center;
+	background:#026698 url(images/loginBg.jpg) repeat-x center top;
+}
+div#loginWrap {
+	text-align:left;
+	margin:0 auto;
+	width:960px;
+}
+div#loginWrap h1 {
+	background: url(images/loginTle.jpg) no-repeat center 1px;
+	height:152px;
+	text-indent:-9999px;
+}
+div#loginWrap h2 {
+	text-indent:-9999px;
+}
+div#login {
+	margin: 0 auto;
+	height:525px;
+	text-align:center;
+	background:url(images/loginWrap.jpg) no-repeat bottom;
+	position:relative;
+	z-index:3;
+}
+div#login div.wrap {
+	margin: 0 auto;
+	padding:0;
+	width:400px;
+	margin-top:10px;
+	overflow:hidden
+}
+span.inputContent {
+	float:left;
+	width:73px;
+	height:24px;
+	text-align:right;
+	margin-right:20px;
+	color:#07678f;
+	margin-top:5px;
+}
+.inputB {/* --输入框样式-- */
+	width:188px;
+	height:22px;
+	background:url(images/inputBg.jpg) left -21px;
+	border:none;
+	float:left;
+	border:1px solid #bccbd2;
+	padding-top:2px;
+}
+.inputB:hover {
+	background: url(images/inputBg.jpg) left top;
+	border:1px solid #5fbed2;
+	height:22px;
+}
+.butStyle {/* --按钮-- */
+	margin-right:20px;
+	width:76px;
+	height:28px;
+	display:block;
+	float:left;
+	position:relative;
+	left:345px;
+	top:25px;
+	cursor:pointer;
+	z-index:5;
+	border:none;
+	color:#fff
+}
+.butStyle {
+	background:url(images/btn.jpg) center bottom;
+}
+hr {
+	visibility:hidden;
+	line-height:1px;
+	height:1px;
+	clear:both;
+}
+#left-input {
+	width:100px;
+	position:relative;
+}
+#right-img {
+	width:56px;
+	height:22px;
+	margin-left:22px;
+	vertical-align:bottom;
+	border:none;
+}
+hr#hrHig {
+	margin-bottom:30px;
+}
+span.ajax {/* --验证信息-- */
+	position:absolute;
+	left:570px;
+	text-align:left;
+	color:#fff;
+	border:1px dotted #d1f7ff;
+	background:#1ab2d9;
+	padding:2px;
+	font-size:12px;
+	width:138px;
+	filter: alpha(opacity=75);
+	opacity:0.7;
+	display:none/* --隐藏-- */
+}
+</style>
+</head>
+<body>
+<div id="loginWrap">
+    <div id="login">
+        <h1>广东省信息所</h1>
+        <h2>数据应用系统</h2>
+        <hr id="hrHig" />
+        <form action="">
+            <div class="wrap"><span class="inputContent" id="nm">用户名：</span>
+                <input type="text" name="name" class="inputB" maxlength="23" />
+                <span class="ajax">这里是验证信验证信息</span> </div>
+            <div class="wrap"><span class="inputContent" id="pw">密码：</span>
+                <input type="password" name="password" class="inputB"  maxlength="23" />
+                <span class="ajax">这里是验证信息</span> </div>
+            <div class="wrap"><span class="inputContent" id="va">验证码：</span>
+                <input name="image" type="text" class="inputB"   id="left-input"/>
+                <input type="image" class="inputB"  id="right-img" src="images/v.gif" alt="888" />
+                <span class="ajax">这里是验证信息</span> </div>
+            <hr />
+            <input  type="button" value="登录" name="login" class="butStyle"  onmouseover="this.style.background='url( images/btn.jpg) -76px top'"  onmouseout="this.style.background='url( images/btn.jpg) center bottom'" />
+            <input  type="button"  value="修改密码"  class="butStyle"    onmouseover="this.style.background='url( images/btn.jpg) -76px top'"  onmouseout="this.style.background='url( images/btn.jpg) center bottom'" />
+            <input  type="button"  value="重置"  class="butStyle"    onmouseover="this.style.background='url( images/btn.jpg) -76px top'"  onmouseout="this.style.background='url( images/btn.jpg) center bottom'" />
+        </form>
+    </div>
+</div>
+</body>
+</html>

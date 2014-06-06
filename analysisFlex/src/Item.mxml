@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical">
+	<mx:Script><![CDATA[
+        //警告: 在未注册版本中，导出Flex项目时不生成Flex脚本,要生成Flex脚本，请到http://www.shankejingling.com/goumai.html购买完整版。
+
+    ]]></mx:Script>
+
+	<mx:Text id="txtDate" x="0" y="0" width="100%" height="20" fontWeight="bold" textAlign="left" fontSize="9" text="_itemDate"/>
+	<mx:TextArea id="mainText" width="100%" height="100%" y="0" editable="false" backgroundColor="#00ffffcc" backgroundAlpha="0" textAlign="left" borderStyle="none" fontSize="12"/>
+	<mx:TextArea id="fullText" x="0" y="0" width="100%" height="100%" includeInLayout="false" visible="false" editable="false" fontSize="12" borderStyle="none" backgroundColor="#00ffffcc" backgroundAlpha="0"/>
+
+	<mx:Style>/* //警告: 在未注册版本中，导出Flex项目时不生成Flex脚本,要生成Flex脚本，请到http://www.shankejingling.com/goumai.html购买完整版。
+ */</mx:Style>
+</mx:Panel>

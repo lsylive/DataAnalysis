@@ -1,0 +1,17 @@
+-- Create sequence 
+create sequence HIBERNATE_SEQUENCE
+minvalue 1
+maxvalue 999999999999999999999999999
+start with 11920
+increment by 1
+cache 20;
+
+
+
+
+create sequence LOG_SEQUENCE
+minvalue 1
+maxvalue 999999999999999999999999999
+start with 11920
+increment by 1
+cache 20;

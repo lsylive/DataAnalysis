@@ -1,0 +1,425 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<link href="jquerylayout/css/custom-theme/jquery-ui-1.7.2.custom.css" type="text/css" rel="stylesheet" />
+	<script  type="text/javascript" src="jquerylayout/js/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="jquerylayout/js/jquery-ui-1.7.2.custom.min.js"></script>
+     <script type="text/javascript" src="jquerylayout/js/jquery.tablesorter.js"></script> 
+      <link rel="stylesheet" href="jquerylayout/tabthemes/blue/style.css" type="text/css" media="print, projection, screen" />
+        <style type="text/css">
+		body { font-size: 62.5%; }
+		label, input { display:block; }
+		input.text { margin-bottom:3px; width:95%; padding: 4px; }
+		fieldset { padding:0; border:0; margin-top:10px; }
+		h1 { font-size: 10px; margin: 6px 0; }
+		div#users-contain {  width: 350px; margin: 10px 0; }
+		div#users-contain table { margin: 1px 0; border-collapse: collapse; width: 100%; }
+		div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6px 10px; text-align: left; }
+		.ui-button { outline: 0; margin:0; padding: .4px 1px .5px; text-decoration:none;  !important; cursor:pointer; position: relative; text-align: center; }
+		.ui-dialog .ui-state-highlight, .ui-dialog .ui-state-error { padding: 3px;  }
+		.pageNavigator {font-family:"Webdings";color:#bbbbbb;font-size:12pt;}
+		.pageNavigatorLink:link      {font-family:"Webdings";color:#3976b5;font-size:12pt;}
+		.pageNavigatorLink:visited   {font-family:"Webdings";font-size:12pt;color:#3976b5;text-decoration:none;}
+		.pageNavigatorLink:hover     {font-family:"Webdings";font-size:12pt;color:#ee0000;text-decoration:none;}
+	</style>
+
+   <script language="javascript">
+	
+      var contextpath = "/sysadmin/";	
+      var hyperlink = "userAction.do";	
+      var fulllink = contextpath + hyperlink;
+      $(document).ready(function()   
+       	{         
+        $("#userForm").tablesorter();    
+        $("#userForm").tablesorterPager({ container: $("#pager"), positionFixed: false })	 
+        }); 	
+
+   </script>	
+   <script language="javascript" src="/sysadmin/js/ctrl_util.js"></script>
+   <script language="javascript" src="/sysadmin/js/date_validate.js"></script>	
+<script language="javascript">
+
+function view(id) {
+    windowopen(fulllink + "?action=view&id=" + id,"",700,450);
+}
+
+function del()  {
+	  var id = findMultiSelected("id","删除");
+	  if(id == "") return;
+	  var res = confirm("是否真的要删除?");
+	  if(res == true) {
+       document.forms[0].action = hyperlink + "?action=delete&id=" + id;
+       document.forms[0].target = "_self";
+       document.forms[0].submit();
+    }
+}
+
+function modify()  {
+	  var id = findSelected("id","修改");
+	  if(id == "") return;
+	  var res = "";
+    res = windowopen(fulllink + "?action=modify&id=" + id,"",700,450);
+    if(res == "refresh") gosearch();
+}
+
+function gostart()  {
+	  var id = findMultiSelected("id","启用");
+	  if(id == "") return;
+    document.forms[0].action = hyperlink + "?action=start&id=" + id;
+    document.forms[0].target = "_self";
+    document.forms[0].submit();
+}
+
+function gostop()  {
+	  var id = findMultiSelected("id","暂停");
+	  if(id == "") return;
+    document.forms[0].action = hyperlink + "?action=stop&id=" + id;
+    document.forms[0].target = "_self";
+    document.forms[0].submit();
+}
+
+function add()  {
+	  var res = windowopen(fulllink + "?action=add","",600,300);
+    if(res == "refresh") gosearch();
+}
+
+function renew()  {
+	  var order = getElement("query.order");                  order.value="";
+	  var desc =  getElement("query.orderDirection");         desc.value="";
+	  var pn =    getElement("query.pageNumber");             pn.value="1";
+	  var ps =    getElement("query.pageSize");               ps.value="10";
+	  var v0 =    getElement("query.parameters(orgNo)");      v0.value="";
+	  var v1 =    getElement("query.parameters(orgName)");    v1.value="";
+	  var v2 =    getElement("query.parameters(isActive)");   v2.value="";
+    gosearch();
+}
+
+function goQuery()  {
+	  var pn = getElement("query.pageNumber");             
+	  pn.value="1";
+    gosearch();
+}
+
+</script>
+ 
+</head>
+
+<body topmargin="0" leftmargin="0" >
+ <div style="width:100%" class="ui-dialog ui-widget ui-widget-content ui-corner-all ">
+ <div style="width:100%" class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix" unselectable="on" style="-moz-user-select: none;"><span class="ui-dialog-title" id="ui-dialog-title-dialog" unselectable="on" style="-moz-user-select: none;">登录系统</span></div> 
+ <div id="dialog" style="width:100%" title="登录系统" class="ui-dialog ui-widget ui-widget-content ui-corner-all">  
+<form name="userForm" method="post" action="/sysadmin/userAction.do">
+  <table border="0" cellspacing="0" cellpadding="0" style="width:100%" class="table ui-datepicker ui-corner-all ">
+  <tr height="*">
+    <td width="16" align="right" valign="top">&nbsp;</td>
+    <td width="*" valign="top">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5" height="100%">
+  <tr height="*">
+    <td align="center" valign="top">
+      <table width="100%" cellpadding="2" cellspacing="0" style="width:100%" class="ui-widget-content ui-corner-all" >
+         <tr>
+           <td  align="right" style="width:10%" class="ui-widget-content ui-corner-all">
+              用户编号：
+           </td>
+           <td   align="center"  width=23%>
+             	<input type="text" name="query.parameters(userCode)" value="" style="width:100%" class="ui-widget ui-widget-content ui-corner-all">
+           </td>
+           <td   align="right" width=10%>
+              用户名：
+           </td>
+           <td   align="center" width=27%>
+             	<input type="text" name="query.parameters(userName)" value="" style="width:100%" class="ui-widget ui-widget-content ui-corner-all">
+           </td>
+           <td   align="right" width=10%>
+              是否启用：
+           </td>
+           <td   align="center" width=20%>
+              <select name="query.parameters(isActive)" style="width:100%" class="ui-widget ui-widget-content ui-corner-all"><option value="" ></option></select>
+           </td>
+         </tr>
+         <tr>
+           <td   align="center" colspan=6>
+                    <button name="btnQuery" onclick="goQuery()" class="ui-button ui-state-default ui-corner-all" value="登录">查询</button>
+                    &nbsp;<button name="btnRefresh" onclick="renew()" class="ui-button ui-state-default ui-corner-all" value="登录">重置</button>
+           </td>
+         </tr>
+      </table>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" class="ui-widget ui-widget-content">
+          <tr>
+            <td width="100%" valign="top">
+       	  	  <p align="center" valign="middle">
+       	  	  	 <font color=red style="font-size:12pt">
+       	  	  	 	  
+       	  	     </font>
+       	  	  </p>
+              <table width="100%" cellspacing="4" cellpadding="0">
+                <tr >
+                  <td valign="top" align="left">
+                    &nbsp;<button name="btnAdd" onclick="add()" class="ui-state-default ui-corner-all" value="登录">增加</button>
+                    &nbsp;<button name="btnModify" onclick="modify()" class="ui-state-default ui-corner-all" value="登录">修改</button>
+                    &nbsp;<button name="btnDelete" onclick="del()" class="ui-state-default ui-corner-all" value="登录">删除</button>
+                    &nbsp;<button name="btnStop" onclick="gostop()" class="ui-state-default ui-corner-all" value="登录">暂停</button>
+                    &nbsp;<button name="btnStart" onclick="gostart()" class="ui-state-default ui-corner-all" value="登录">启用</button>
+                    &nbsp;<button name="btnRefresh" onclick="gosearch()" class="ui-state-default ui-corner-all" value="登录">刷新</button>
+                  </td>
+                </tr>
+              </table>
+                  
+
+    	         
+<table  width="100%" border="0" cellSpacing="0" cellPadding="0">
+   <tr height="*">
+      <td >
+<table name="userForm" id="userForm" style="background-color:#013298" class="td_RightBottom" width="100%" border="0" cellSpacing="0" cellPadding="2" class="ui-widget ui-widget-content">
+  <thead class="ui-widget-header" height="27">
+  	<th width="3%" >
+         &nbsp;
+      </th>
+      <th width="10%" style="color:#000077"  onClick="query('userCode')" onMouseOver="headerOver(this)" onMouseOut="headerOut(this)">
+         编号
+      </th>
+      <th width="12%" style="color:#000077"  onClick="query('userName')" onMouseOver="headerOver(this)" onMouseOut="headerOut(this)">
+         姓名
+      </th>
+      <th width="30%" >
+         电子邮件
+      </th>
+      <th width="35%" >
+         说明
+      </th>
+      <th width="10%" >
+         是否起用
+      </th>
+  </thead>
+ 
+   <tr   onMouseOver="secondRowMouseOver(this)" onMouseOut="secondRowMouseOut(this)">
+      <td  width="3%" >
+         <input type="checkbox" name="id" >
+      </td>
+      <td  align="center" width="10%" >
+         Sas
+      </td>
+      <td  width="12%" >
+         asdasd
+      </td>
+      <td  width="30%" >
+         adsasd
+      </td>
+      <td  width="35%" >
+         asdasd
+      </td>
+      <td  align="center" width="10%" >
+        adsasd
+      </td>
+   </tr>
+   <tr   onMouseOver="rowMouseOver(this)" onMouseOut="rowMouseOut(this)">
+      <td  width="3%" >
+         <input type="checkbox" name="id" disabled >
+      </td>
+      <td  align="center" width="10%" >
+         asdasdasd
+      </td>
+      <td  width="12%" >
+         q3e4123
+      </td>
+      <td  width="30%" >
+         adasd
+      </td>
+      <td  width="35%" >
+         123412ad
+      </td>
+      <td  align="center" width="10%" >
+         asdasdasd
+      </td>
+   </tr>
+   <tr   onMouseOver="secondRowMouseOver(this)" onMouseOut="secondRowMouseOut(this)">
+      <td  width="3%" >
+         <input type="checkbox" name="id" disabled >
+      </td>
+      <td  align="center" width="10%" >
+         asdasdasd
+      </td>
+      <td  width="12%" >
+         adsasdasd
+      </td>
+      <td  width="30%" >
+         adsasd
+      </td>
+      <td  width="35%" >
+         asdasd
+      </td>
+      <td  align="center" width="10%" >
+        asdasd
+      </td>
+   </tr>
+   <tr   onMouseOver="rowMouseOver(this)" onMouseOut="rowMouseOut(this)">
+      <td  width="3%" >
+         <input type="checkbox" name="id" disabled >
+      </td>
+      <td  align="center" width="10%" >
+        asdaaqea
+      </td>
+      <td  width="12%" >
+         asdasdasd
+      </td>
+      <td  width="30%" >
+         asdasdas2
+      </td>
+      <td  width="35%" >
+         asda3era
+      </td>
+      <td  align="center" width="10%" >
+         asdasdasd
+      </td>
+   </tr>
+   <tr   onMouseOver="secondRowMouseOver(this)" onMouseOut="secondRowMouseOut(this)">
+      <td  width="3%" >
+         <input type="checkbox" name="id" disabled >
+      </td>
+      <td  align="center" width="10%" >
+         adsasdad
+      </td>
+      <td  width="12%" >
+         234qeade
+      </td>
+      <td  width="30%" >
+         asdasdar
+      </td>
+      <td  width="35%" >
+         asdasdae
+      </td>
+      <td  align="center" width="10%" >
+         asdasdasd
+      </td>
+   </tr>
+   <tr   onMouseOver="rowMouseOver(this)" onMouseOut="rowMouseOut(this)">
+      <td  width="3%" >
+         <input type="checkbox" name="id" disabled >
+      </td>
+      <td  align="center" width="10%" >
+         asdasda2
+      </td>
+      <td  width="12%" >
+         adsasdasd
+      </td>
+      <td  width="30%" >
+         adasd
+      </td>
+      <td  width="35%" >
+         sdfdsf
+      </td>
+      <td  align="center" width="10%" >
+         sdfdsfdsf
+      </td>
+   </tr>
+   <tr   onMouseOver="secondRowMouseOver(this)" onMouseOut="secondRowMouseOut(this)">
+      <td  width="3%" >
+         <input type="checkbox" name="id" disabled >
+      </td>
+      <td  align="center" width="10%" >
+         34sdfsd
+      </td>
+      <td  width="12%" >
+         asdasd
+      </td>
+      <td  width="30%" >
+         asdasd
+      </td>
+      <td  width="35%" >
+        asdasd
+      </td>
+      <td  align="center" width="10%" >
+         asdasdasd
+      </td>
+   </tr>
+   <tr   onMouseOver="rowMouseOver(this)" onMouseOut="rowMouseOut(this)">
+      <td  width="3%" >
+         <input type="checkbox" name="id" disabled >
+      </td>
+      <td  align="center" width="10%" >
+        3sdfsfs
+      </td>
+      <td  width="12%" >
+         &nbsp;
+      </td>
+      <td  width="30%" >
+         &nbsp;
+      </td>
+      <td  width="35%" >
+         &nbsp;
+      </td>
+      <td  align="center" width="10%" >
+         &nbsp;
+      </td>
+   </tr>
+   <tr   onMouseOver="secondRowMouseOver(this)" onMouseOut="secondRowMouseOut(this)">
+      <td  width="3%" >
+         <input type="checkbox" name="id" disabled >
+      </td>
+      <td  align="center" width="10%" >
+         &nbsp;
+      </td>
+      <td  width="12%" >
+         &nbsp;
+      </td>
+      <td  width="30%" >
+         &nbsp;
+      </td>
+      <td  width="35%" >
+         &nbsp;
+      </td>
+      <td  align="center" width="10%" >
+         &nbsp;
+      </td>
+   </tr>
+   <tr   onMouseOver="rowMouseOver(this)" onMouseOut="rowMouseOut(this)">
+      <td  width="3%" >
+         <input type="checkbox" name="id" disabled >
+      </td>
+      <td  align="center" width="10%" >
+         &nbsp;
+      </td>
+      <td  width="12%" >
+         &nbsp;
+      </td>
+      <td  width="30%" >
+         &nbsp;
+      </td>
+      <td  width="35%" >
+         &nbsp;
+      </td>
+      <td  align="center" width="10%" >
+         &nbsp;
+      </td>
+   </tr>
+</table>
+      </td>
+   </tr>
+   <tr id="pager" class="pager" style="float: right">
+   	<td>
+   	<button class="first"><font class="pageNavigator ui-state-default" >9</button>   
+<button class="prev"><font class="pageNavigator ui-state-default" >3</button>   
+<button class="next"><font class="pageNavigator ui-state-default" >4</button>   
+<button class="last"><font class="pageNavigator ui-state-default" >:</button>    
+   	
+   	</td>
+   </tr>
+</table>
+
+		
+             </td>
+           </tr>
+        </table>
+    </td>
+  </tr>
+</table>
+</td>
+</tr>
+</table>
+</form>
+</div>
+</div>
+</body>
+</html>

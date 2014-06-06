@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>         
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">         
+         
+<beans default-lazy-init="true">         
+<!-- QuerySubjectService bean declare begin -->         
+   <bean id="querySubjectService" parent="txProxyTemplate">              
+        <property name="target">              
+            <bean class="com.liusy.datapp.service.query.impl.QuerySubjectServiceImpl" autowire="byName"/>              
+        </property>              
+    </bean>            
+<!-- QuerySubjectService bean declare end -->         
+<!-- QueryColumnCfgService bean declare begin -->        
+   <bean id="queryColumnCfgService" parent="txProxyTemplate">       
+        <property name="target">       
+            <bean class="com.liusy.datapp.service.query.impl.QueryColumnCfgServiceImpl" autowire="byName"/>       
+        </property>       
+    </bean>     
+<!-- QueryColumnCfgService bean declare end -->        
+<!-- SubjectTableRelationService bean declare begin -->     
+   <bean id="subjectTableRelationService" parent="txProxyTemplate">          
+        <property name="target">          
+            <bean class="com.liusy.datapp.service.query.impl.SubjectTableRelationServiceImpl" autowire="byName"/>          
+        </property>          
+    </bean>        
+<!-- SubjectTableRelationService bean declare end -->     
+<!-- SubjectTableColRelationService bean declare begin -->    
+   <bean id="subjectTableColRelationService" parent="txProxyTemplate">         
+        <property name="target">         
+            <bean class="com.liusy.datapp.service.query.impl.SubjectTableColRelationServiceImpl" autowire="byName"/>         
+        </property>         
+    </bean>       
+<!-- SubjectTableColRelationService bean declare end -->    
+<!-- SubjectColumnCfgService bean declare begin -->   
+   <bean id="subjectColumnCfgService" parent="txProxyTemplate">        
+        <property name="target">        
+            <bean class="com.liusy.datapp.service.query.impl.SubjectColumnCfgServiceImpl" autowire="byName"/>        
+        </property>        
+    </bean>      
+<!-- SubjectColumnCfgService bean declare end -->   
+<!-- QueryParamCfgService bean declare begin --> 
+   <bean id="queryParamCfgService" parent="txProxyTemplate">      
+        <property name="target">      
+            <bean class="com.liusy.datapp.service.query.impl.QueryParamCfgServiceImpl" autowire="byName"/>      
+        </property>      
+    </bean>    
+<!-- QueryParamCfgService bean declare end --> 
+	<bean id="synthesisQueryService" class="com.liusy.datapp.service.query.impl.SynthesisQueryServiceImpl">
+		<property name="synthesisQueryDao">
+			<ref bean="synthesisQueryDao"/>
+		</property>
+		<property name="specialTables">
+			<map>
+				<entry key="GZCH" value="1" />
+				<entry key="GZCH_2002" value="1" />
+				<entry key="GZCH_2003" value="1" />
+				<entry key="GZCH_2004" value="1" />
+				<entry key="GZCH_2005" value="1" />
+				<entry key="GZCH_2006" value="1" />
+				<entry key="GZCH_2007" value="1" />
+				<entry key="GZCH_2008" value="1" />
+				<entry key="GZCH_2009" value="1" />
+				<entry key="GZCH_2010" value="1" />
+				<entry key="GZCH_2011" value="1" />
+				<entry key="GZCH2002" value="1" />
+				<entry key="GZCH2003" value="1" />
+				<entry key="GZCH2004" value="1" />
+				<entry key="GZCH2005" value="1" />
+				<entry key="GZCH2006" value="1" />
+				<entry key="GZCH2007" value="1" />
+				<entry key="GZCH2008" value="1" />
+				<entry key="GZCH2009" value="1" />
+				<entry key="GZCH2010" value="1" />
+				<entry key="GZCH2011" value="1" />
+			</map>
+		</property>
+		
+		<property name="adminLevels">
+			<map>
+				<entry key="1" value="A" />
+				<entry key="2" value="A" />
+				<entry key="3" value="A" />
+				<entry key="4" value="B" />
+				<entry key="5" value="B" />
+				<entry key="6" value="B" />
+				<entry key="7" value="C" />
+				<entry key="8" value="C" />
+				<entry key="9" value="A" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="synthesisColumnGenService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.liusy.datapp.service.dynamicquery.impl.SynthesisColumnGenServiceImpl" autowire="byName"/>
+		</property>
+	</bean>
+	<!--
+	<bean id="synthesisQueryForCompareService" class="com.liusy.datapp.service.query.impl.SynthesisQueryForCompareServiceImpl">
+		<property name="synthesisQueryForCompareDao">
+			<ref bean="synthesisQueryForCompareDao"/>
+		</property>
+	</bean>
+	-->
+	<bean id="searchEngineService" class="com.liusy.datapp.service.query.impl.SearchEngineServiceImpl">
+		<property name="indexFolder" value="D:/fullindex/index"/>
+		<property name="resourceFolder" value="W:/资源test0000/Eclipse"/>
+		<property name="mmseg_dic_path" value="D:/fullindex/data"/>
+	</bean>
+</beans>         
+         

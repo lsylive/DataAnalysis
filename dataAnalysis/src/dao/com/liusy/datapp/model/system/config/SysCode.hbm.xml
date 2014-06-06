@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.system.config">
+   <class name="SysCode" table="T_SYS_CODE" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="treeLevel" column="TREE_LEVEL" type="integer" not-null="false" length="2" />
+      <property name="modifiedby" column="MODIFYBY" type="string" not-null="false" length="7" />
+      <property name="value" column="ITEM_VALUE" type="string" not-null="false" length="32" />
+      <property name="parentValue" column="PARENT_VALUE" type="string" not-null="false" length="32" />
+      <property name="status" column="CODE_STATUS" type="string" not-null="false" length="32" />
+      <property name="modifyDate" column="MODIFYDATE" type="date" not-null="false" length="7" />
+      <property name="orderNo" column="ORDER_NO" type="integer" not-null="false" length="8" />
+      <property name="createDate" column="CREATEDATE" type="date" not-null="false" length="32" />
+      <property name="createdBy" column="CREATEBY" type="string" not-null="false" length="32" />
+      <property name="parentId" column="PARENT_ITEM_ID" type="string" not-null="false" length="32" />
+      <property name="name" column="ITEM_NAME" type="string" not-null="false" length="32" />
+      <property name="treeCode" column="TREE_CODE" type="string" not-null="false" length="256" />
+      <property name="codeSetId" column="CS_ID" type="integer" not-null="false" length="22" />
+      <property name="remark" column="REMARK" type="string" not-null="false" length="512" />
+   </class>	
+</hibernate-mapping>

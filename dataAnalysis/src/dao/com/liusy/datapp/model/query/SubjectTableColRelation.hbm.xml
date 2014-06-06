@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.query">
+   <class name="SubjectTableColRelation" table="T_QUERY_SUBTABLECOL_R" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="subjectTabId" column="SUBJECTTABID" type="integer" not-null="false" length="22" />
+      <property name="columnid" column="COLUMNID" type="integer" not-null="false" length="22" />
+      <property name="displayWidth" column="DISPLAY_WIDTH" type="integer" not-null="false" length="22" />
+      <property name="isSortable" column="IS_SORTABLE" type="string" not-null="false" length="1" />
+      <property name="isSubject" column="IS_SUBJECT" type="string" not-null="false" length="1" />
+      <property name="isShown" column="IS_SHOWN" type="string" not-null="false" length="1" />
+      <property name="isFilter" column="IS_FILTER" type="string" not-null="false" length="1" />
+      <property name="defaultSort" column="DEFAULT_SORT" type="string" not-null="false" length="1" />
+   </class>	
+</hibernate-mapping>

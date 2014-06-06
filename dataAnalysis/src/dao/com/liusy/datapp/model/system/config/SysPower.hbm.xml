@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.system.config">
+   <class name="SysPower" table="T_SYS_POWER_INFO" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="powerDesc" column="POWER_DESC" type="string" not-null="false" length="128" />
+      <property name="actionUrl" column="ACTION_URL" type="string" not-null="false" length="128" />
+      <property name="powerName" column="POWER_NAME" type="string" not-null="false" length="64" />
+      <property name="powerCode" column="POWER_CODE" type="string" not-null="true" length="32" />
+      <property name="remark" column="REMARK" type="string" not-null="false" length="256" />
+   </class>	
+</hibernate-mapping>

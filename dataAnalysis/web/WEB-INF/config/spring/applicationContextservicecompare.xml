@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>           
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">           
+           
+<beans default-lazy-init="false">
+<!-- 
+ <bean id="timer" class="org.springframework.scheduling.timer.TimerFactoryBean">
+		<property name="scheduledTimerTasks">
+			<list>
+				<ref local="compareExecTimerTask"/> 
+			</list>
+		</property>
+	</bean>   		 
+	<bean id="compareExecTimerTask" class="org.springframework.scheduling.timer.ScheduledTimerTask">
+	    <property name="delay" value="10000" />
+	    <property name="period" value="60000" />
+
+	    <property name="timerTask" ref="compareExecTimer" />
+	</bean> 
+<bean id="compareExecTimer" class="com.liusy.datapp.service.thread.compare.CompareExecTimer" singleton="true">
+    	<property name="compareInfoService" ref="compareInfoService" /> 
+    	<property name="copyOfCompareTaskExecutor" ref="copyOfCompareTaskExecutor" /> 
+    	<property name="compareRunInfoService" ref="compareRunInfoService" /> 
+    </bean>	
+ -->
+
+
+<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="30" />
+      	<property name="maxPoolSize" value="50" />  
+    	<property name="queueCapacity" value="60"/>
+    <!--     <property name="keepAliveSeconds" value="0"/>  -->
+</bean>
+
+ <bean id="compareTaskExecutor" class="com.liusy.datapp.service.thread.compare.CompareTaskExecutor" autowire="byName">
+ 	 <constructor-arg ref="taskExecutor" />
+ 	 <property name="mainPeiceCount" value="3000" />
+ 	 <property name="slavePeiceCount" value="1000" />
+ 	 <property name="needContinue" value="false" />
+   </bean>
+   
+  <bean id="copyOfCompareTaskExecutor" class="com.liusy.datapp.service.thread.compare.CopyOfCompareTaskExecutor" autowire="byName">
+ 	 <constructor-arg ref="taskExecutor" />
+ 	 <property name="mainPeiceCount" value="6000" />
+ 	 <property name="slavePeiceCount" value="10000" />
+ 	 <property name="threadPendingSeconds" value="0" />
+ 	 <property name="needContinue" value="false" />
+ 	 <property name="threadCountPerSlave" value="10" />
+ 	 
+   </bean>
+
+ <bean id="jobExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="5" />  
+        <property name="maxPoolSize" value="60" />
+    </bean>
+    
+    
+ <bean id="compareInfoJobThread" class="com.liusy.datapp.service.thread.compare.CompareInfoJobThread" autowire="byName">
+ 	 <constructor-arg ref="jobExecutor" />
+   </bean>
+
+ <bean id="copyOfCompareInfoJobThread" class="com.liusy.datapp.service.thread.compare.CopyOfCompareInfoJobThread" autowire="byName">
+   </bean>
+
+<!-- CompareInfoService bean declare begin -->           
+   <bean id="compareInfoService" parent="txProxyTemplate">               
+        <property name="target">                
+            <bean class="com.liusy.datapp.service.compare.impl.CompareInfoServiceImpl" autowire="byName" />                
+        </property>        
+    </bean>              
+<!-- CompareInfoService bean declare end -->           
+<!-- CompareTableRelationService bean declare begin -->          
+   <bean id="compareTableRelationService" parent="txProxyTemplate">               
+        <property name="target">               
+            <bean class="com.liusy.datapp.service.compare.impl.CompareTableRelationServiceImpl" autowire="byName"/>               
+        </property>               
+    </bean>             
+<!-- CompareTableRelationService bean declare end -->          
+<!-- CompareIndicatorService bean declare begin -->         
+   <bean id="compareIndicatorService" parent="txProxyTemplate">              
+        <property name="target">              
+            <bean class="com.liusy.datapp.service.compare.impl.CompareIndicatorServiceImpl" autowire="byName"/>              
+        </property>              
+    </bean>            
+<!-- CompareIndicatorService bean declare end -->         
+<!-- CompareFilterService bean declare begin -->        
+   <bean id="compareFilterService" parent="txProxyTemplate">             
+        <property name="target">             
+            <bean class="com.liusy.datapp.service.compare.impl.CompareFilterServiceImpl" autowire="byName"/>             
+        </property>             
+    </bean>           
+<!-- CompareFilterService bean declare end -->        
+<!-- CompareRunInfoService bean declare begin -->       
+   <bean id="compareRunInfoService" parent="txProxyTemplate">      
+        <property name="target">      
+            <bean class="com.liusy.datapp.service.compare.impl.CompareRunInfoServiceImpl" autowire="byName"/>      
+        </property>      
+    </bean>    
+<!-- CompareRunInfoService bean declare end -->       
+<!-- CompareMainResultService bean declare begin -->      
+   <bean id="compareMainResultService" parent="txProxyTemplate">        
+        <property name="target">        
+            <bean class="com.liusy.datapp.service.compare.impl.CompareMainResultServiceImpl" autowire="byName"/>        
+        </property>
+                    
+    </bean>      
+<!-- CompareMainResultService bean declare end -->      
+<!-- CompareSlaveResultService bean declare begin -->    
+   <bean id="compareSlaveResultService" parent="txProxyTemplate">       
+        <property name="target">       
+            <bean class="com.liusy.datapp.service.compare.impl.CompareSlaveResultServiceImpl" autowire="byName"/>       
+        </property>       
+    </bean>     
+<!-- CompareSlaveResultService bean declare end -->   
+
+   <bean id="compareRunThreadService" parent="txProxyTemplate">       
+        <property name="target">       
+            <bean class="com.liusy.datapp.service.compare.impl.CompareRunThreadServiceImpl" autowire="byName"/>       
+        </property>       
+    </bean>   
+</beans>
+           

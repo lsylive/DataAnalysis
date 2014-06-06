@@ -1,0 +1,211 @@
+DataGrid {
+	rollOverColor: #ffffaa;
+	selectionColor: #ffbb88;
+	fontSize: 12;
+	headerStyleName: "mydataGridHeaderStyle";
+}
+.mydataGridHeaderStyle {
+	fontWeight: bold;
+	fontSize: 12;
+}
+
+Alert {    
+   modalTransparencyBlur: 1;    
+   modalTransparency: 0.15;    
+   modalTransparencyColor: #bbddff;    
+   modalTransparencyDuration: 400;  
+   
+   borderStyle:soild; 
+   borderColor:#000000;  
+   borderAlpha:0.9; 
+   borderThickness:0; 
+   
+   roundedBottomCorners:true; 
+   cornerRadius:2; 
+   headerHeight:21; 
+   backgroundAlpha:1; 
+   
+   titleStyleName:"alertTitle"; 
+   background-color:#E3F1EF;
+   message-style-name:"messageStyle"; 
+   headerColors:#9999cc,#6060a0;
+   button-style-name:"AlertButtons";
+} 
+
+.alertTitle { 
+   fontSize:13; 
+   color:#ffffff; 
+   font-weight:bold; 
+}   
+
+.messageStyle { 
+   letterSpacing:0; 
+   color:#000000; 
+   textAlign:left; 
+   fontSize:13; 
+   font-weight:normal;   
+}  
+
+
+.AlertButtons{ 
+   cornerRadius:1; 
+   highlightAlphas:1, 0; 
+   fillAlphas:1,1; 
+   fillColors:#aaaaaa,#808080; 
+   color:#000000; 
+   fontSize:13; 
+   fontWeight:normal; 
+} 
+
+Button{ 
+	fontSize: 12;
+	paddingBottom: 1;
+	paddingLeft: 1;
+	paddingRight: 1;
+	paddingTop: 1;
+   cornerRadius: 3;
+}
+Label {
+   fontSize: 12;
+   paddingBottom: 1;
+   paddingLeft: 1;
+   paddingRight: 1;
+   paddingTop: 1;
+	textAlign: right;
+}
+TextInput {
+   fontSize: 12;
+   paddingBottom: 1;
+   paddingLeft: 1;
+   paddingRight: 1;
+   paddingTop: 1;
+	borderColor: #000000;
+	borderStyle: solid;
+}
+ComboBox {
+	borderColor: #555555;
+	borderStyle: solid;
+	cornerRadius:1;
+   fontSize: 12;
+   paddingBottom: 1;
+   paddingLeft: 1;
+   paddingRight: 1;
+   paddingTop: 1;
+   selectionColor: #000077;
+   textSelectedColor: #ffffff;
+   rollOverColor: #99ccff;
+   dropdownStyleName: "myComboBoxDropDowns";
+}
+
+.myComboBoxDropDowns {
+   borderThickness: 1;
+   borderColor: #000000;
+   color: #000000;
+   fontWeight: normal;
+   fontStyle: normal;
+   textDecoration: none;
+}
+
+
+
+.titleLabel {
+	fontSize:24;
+	fontWeight:bold;
+	textAlign: center;
+}
+.controlPanel {
+	borderColor: #000000;
+	borderAlpha: 0.51;
+	borderThickness: 1;
+	borderThicknessLeft: 1;
+	borderThicknessTop: 1;
+	borderThicknessBottom: 1;
+	borderThicknessRight: 1;
+	roundedBottomCorners: true;
+	cornerRadius: 8;
+	headerHeight: 24;
+	backgroundAlpha: 0.49;
+	highlightAlphas: 0.3, 0;
+	headerColors: #33ccff, #339999;
+	backgroundColor: #ffffcc;
+	titleStyleName: "mypanelTitle";
+}
+
+.mypanelTitle {
+	letterSpacing: 1;
+	color: #ffffff;
+	fontSize: 12;
+}
+
+
+.chartPanel {
+	borderStyle: solid;
+	borderThickness: 0;
+	backgroundColor: #6699ff;
+	dropShadowEnabled: false;
+	backgroundAlpha: 0;
+	titleStyleName: "chartpanelTitle";
+}
+
+.chartpanelTitle {
+	letterSpacing: 2;
+	color: #000000;
+	textAlign: center;
+	fontSize: 20;
+	fontWeight: bold;
+}		
+
+ToolTip {
+	fontFamily: "Arial";
+	fontSize: 12;
+	color: #FFFF55;
+	backgroundColor: #848482;
+   borderStyle: solid;
+   borderThickness: 1;
+   borderColor: #FF0202;
+   backgroundAlpha: 0.7;
+}
+
+TileList{
+	borderStyle:solid;
+	borderThickness:1;
+    borderColor:#000000;
+   fontSize: 12;
+}
+
+.queryPanel {
+	borderStyle: solid;
+	borderColor: #000000;
+	borderAlpha: 0;
+	borderThickness: 1;
+	roundedBottomCorners: true;
+	backgroundAlpha: 0;
+	dropShadowEnabled: false;
+	titleStyleName: "querypanelTitle";
+}
+
+.querypanelTitle {
+	letterSpacing: 1;
+	fontSize: 12;
+	fontWeight: bold;
+}
+
+.deltailPanel {
+	borderStyle: solid;
+	borderColor: #000000;
+	borderAlpha: 1;
+	borderThickness: 1;
+	roundedBottomCorners: true;
+	cornerRadius: 6;
+	headerHeight: 10;
+	backgroundAlpha: 1;
+	dropShadowEnabled: true;
+	shadowDistance: 3;
+	shadowDirection: right;
+	dropShadowColor: #000000;
+}
+
+DateField {
+   borderColor: #000000;
+   borderThickness: 1;
+}

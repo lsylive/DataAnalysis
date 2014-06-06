@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.system.config">
+   <class name="SysCodeSet" table="T_SYS_CODESET" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="modifiedBy" column="MODIFYBY" type="string" not-null="false" length="7" />
+      <property name="status" column="CS_STATUS" type="string" not-null="false" length="2" />
+      <property name="createDate" column="CREATEDATE" type="date" not-null="false" length="7" />
+      <property name="ename" column="EN_NAME" type="string" not-null="false" length="32" />
+      <property name="createdBy" column="CREATEBY" type="string" not-null="false" length="32" />
+      <property name="modifyDate" column="MODIFYDATE" type="date" not-null="false" length="7" />
+      <property name="cname" column="CN_NAME" type="string" not-null="false" length="32" />
+      <property name="description" column="REMARK" type="string" not-null="false" length="512" />
+   </class>	
+</hibernate-mapping>

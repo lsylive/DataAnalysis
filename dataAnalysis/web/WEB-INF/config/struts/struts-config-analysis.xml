@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>
+   <!-- 固定查询开始 -->
+   	<form-bean name="analysisForm" type="com.liusy.datapp.web.analysis.form.AnalysisForm"></form-bean>
+   	<form-bean name="analysisQueryForm" type="com.liusy.datapp.web.analysis.form.AnalysisQueryForm"></form-bean>
+   <!-- 固定查询结束 -->
+  </form-beans>
+
+  <!-- ========== Action Mapping Definitions =================================== -->
+   <!-- 查询配置开始 -->
+   <action-mappings>
+
+   <!-- 固定查询开始 -->
+   	<action path="/analysis/analysis" scope="request" name="analysisForm" validate="true" 
+   	        type="com.liusy.datapp.web.analysis.action.AnalysisAction">
+   	   <forward name="LIST" path="/pages/analysis/analysis_list.jsp" redirect="false"></forward>
+   	   <forward name="query" path="/pages/analysis/query.jsp" redirect="false"></forward>
+   	</action>
+      <action path="/analysis/template" scope="request" name="analysisQueryForm" validate="true" 
+              type="com.liusy.datapp.web.analysis.action.AnalysisQueryAction">
+   	</action>
+    <action path="/analysis/template2" scope="request" name="analysisQueryForm" validate="true" 
+              type="com.liusy.datapp.web.analysis.action.MyAnalysisQueryAction">
+   	</action>
+   	
+    <!-- 固定查询结束 -->
+   </action-mappings>
+</struts-config>

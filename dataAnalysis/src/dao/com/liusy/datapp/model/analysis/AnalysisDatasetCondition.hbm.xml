@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.analysis">
+   <class name="AnalysisDatasetCondition" table="T_ANALYSIS_DATASET_CONDITION" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="analysisDatasetId" column="ANALYSIS_DATASET_ID" type="integer" not-null="false" length="22" />
+      <property name="resourceColumnName" column="RESOURCE_COLUMN_NAME" type="string" not-null="false" length="32" />
+      <property name="conditionType" column="CONDITION_TYPE" type="string" not-null="false" length="2" />
+      <property name="operator" column="OPERATOR" type="string" not-null="false" length="32" />
+      <property name="value" column="VALUE" type="string" not-null="false" length="2000" />
+      <property name="resourceColumnId" column="RESOURCE_COLUMN_ID" type="integer" not-null="false" length="22" />
+   </class>	
+</hibernate-mapping>

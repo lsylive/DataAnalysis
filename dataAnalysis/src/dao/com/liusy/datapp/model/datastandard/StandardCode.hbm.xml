@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.datastandard">
+   <class name="StandardCode" table="T_STANDARD_CODE" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="status" column="STATUS" type="string" not-null="false" length="1" />
+      <property name="name" column="NAME" type="string" not-null="false" length="64" />
+      <property name="value" column="VALUE" type="string" not-null="false" length="32" />
+      <property name="remark" column="REMARK" type="string" not-null="false" length="256" />
+      <property name="codesetId" column="CODESET_ID" type="integer" not-null="false" length="22" />
+   </class>	
+</hibernate-mapping>

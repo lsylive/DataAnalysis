@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.query">
+   <class name="QuerySubject" table="T_QUERY_SUBJECT" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="subDesc" column="SUB_DESC" type="string" not-null="false" length="128" />
+      <property name="modifyby" column="MODIFYBY" type="string" not-null="false" length="32" />
+      <property name="cityId" column="CITY_ID" type="integer" not-null="false" length="22" />
+      <property name="subType" column="SUB_TYPE" type="string" not-null="false" length="1" />
+      <property name="scId" column="SC_ID" type="integer" not-null="false" length="22" />
+      <property name="createdate" column="CREATEDATE" type="java.util.Date" not-null="false" length="7" />
+      <property name="createby" column="CREATEBY" type="string" not-null="false" length="32" />
+      <property name="subName" column="SUB_NAME" type="string" not-null="false" length="128" />
+      <property name="modifydate" column="MODIFYDATE" type="java.util.Date" not-null="false" length="7" />
+      <property name="subCode" column="SUB_CODE" type="string" not-null="false" length="128" />
+      <property name="remark" column="REMARK" type="string" not-null="false" length="256" />
+    <property name="orde" column="ORDE" type="integer" not-null="false" length="22" />
+   </class>	
+</hibernate-mapping>

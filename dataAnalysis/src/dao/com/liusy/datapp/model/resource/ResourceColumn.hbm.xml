@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liusy.datapp.model.resource">
+   <class name="ResourceColumn" table="T_RESOURCE_COLUMN" >
+      <meta attribute="sync-DAO">true</meta>
+      <id name="id" column="ID" type="integer" >
+         <generator class="native"/>
+      </id>
+      <property name="modifyDate" column="MODIFY_DATE" type="date" not-null="false" length="7" />
+      <property name="isForeign" column="IS_FOREIGN" type="string" not-null="false" length="1" />
+      <property name="createBy" column="CREATE_BY" type="string" not-null="false" length="32" />
+      <property name="securityLevel" column="SECURITY_LEVEL" type="string" not-null="false" length="1" />
+      <property name="dataType" column="DATA_TYPE" type="string" not-null="false" length="2" />
+      <property name="isNull" column="IS_NULL" type="string" not-null="false" length="1" />
+      <property name="maxValue" column="MAX_VALUE" type="string" not-null="false" length="256" />
+      <property name="modifyBy" column="MODIFY_BY" type="string" not-null="false" length="32" />
+      <property name="tableId" column="TABLE_ID" type="integer" not-null="false" length="22" />
+      <property name="createDate" column="CREATE_DATE" type="date" not-null="false" length="7" />
+      <property name="cnName" column="CN_NAME" type="string" not-null="false" length="64" />
+      <property name="dataPercise" column="DATA_PERCISE" type="integer" not-null="false" length="22" />
+      <property name="squenceNo" column="SQUENCE_NO" type="integer" not-null="false" length="22" />
+      <property name="indicatorId" column="INDICATOR_ID" type="integer" not-null="false" length="22" />
+      <property name="dataLength" column="DATA_LENGTH" type="integer" not-null="false" length="22" />
+      <property name="isPrimary" column="IS_PRIMARY" type="string" not-null="false" length="1" />
+      <property name="minValue" column="MIN_VALUE" type="string" not-null="false" length="256" />
+      <property name="code" column="CODE" type="string" not-null="false" length="32" />
+      <property name="name" column="NAME" type="string" not-null="false" length="32" />
+      <property name="datametaId" column="DATAMETA_ID" type="integer" not-null="false" length="22" />
+      <property name="remark" column="REMARK" type="string" not-null="false" length="256" />
+      <property name="defaultValue" column="DEFAULT_VALUE" type="string" not-null="false" length="256" />
+      <property name="codesetId" column="CODESET_ID" type="integer" not-null="false" length="22" />
+   </class>	
+</hibernate-mapping>
